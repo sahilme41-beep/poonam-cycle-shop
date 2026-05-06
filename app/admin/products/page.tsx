@@ -19,6 +19,7 @@ export default function AdminProductsPage() {
   const [products, setProducts] = useState<any[]>([]);
   const [form, setForm] = useState<any>(baseProduct);
   const [uploading, setUploading] = useState(false);
+  const [editingId, setEditingId] = useState<string | null>(null);
 
   async function load() {
     const res = await fetch("/api/products");
@@ -31,14 +32,17 @@ export default function AdminProductsPage() {
 
   async function submit(e: FormEvent) {
     e.preventDefault();
+    const isEdit = Boolean(editingId);
+    const payload = isEdit ? { ...form, id: editingId } : form;
     const res = await fetch("/api/products", {
-      method: "POST",
+      method: isEdit ? "PUT" : "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(form)
+      body: JSON.stringify(payload)
     });
     if (res.ok) {
-      toast.success("Product added");
+      toast.success(isEdit ? "Product updated" : "Product added");
       setForm(baseProduct);
+      setEditingId(null);
       load();
     } else toast.error("Failed to add product");
   }
@@ -80,10 +84,41 @@ export default function AdminProductsPage() {
     }
   }
 
+  function startEdit(product: any) {
+    setForm({
+      name: product.name,
+      price: product.price,
+      stock: product.stock,
+      category: product.category,
+      subcategory: product.subcategory || "",
+      visible: product.visible ?? true,
+      variants: product.variants?.length ? product.variants : [{ color: "Default", image: "" }],
+      features: product.features || [],
+      specs: product.specs || []
+    });
+    setEditingId(product._id);
+  }
+
+  async function moveOrder(product: any, direction: "up" | "down") {
+    const currentOrder = product.order || 0;
+    const nextOrder = direction === "up" ? currentOrder - 1 : currentOrder + 1;
+    const res = await fetch("/api/products", {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ id: product._id, order: nextOrder })
+    });
+    if (res.ok) {
+      toast.success("Product order updated");
+      load();
+    } else {
+      toast.error("Unable to reorder");
+    }
+  }
+
   return (
     <div className="mx-auto grid max-w-7xl gap-6 px-4 py-8 md:grid-cols-2">
       <form onSubmit={submit} className="space-y-2 rounded-xl bg-white p-4 shadow-sm">
-        <h1 className="text-2xl font-bold">Add Product</h1>
+        <h1 className="text-2xl font-bold">{editingId ? "Edit Product" : "Add Product"}</h1>
         <input className="w-full rounded border p-2" placeholder="Name" value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} />
         <input className="w-full rounded border p-2" type="number" placeholder="Price" value={form.price} onChange={(e) => setForm({ ...form, price: Number(e.target.value) })} />
         <input className="w-full rounded border p-2" type="number" placeholder="Stock" value={form.stock} onChange={(e) => setForm({ ...form, stock: Number(e.target.value) })} />
@@ -101,7 +136,23 @@ export default function AdminProductsPage() {
           }}
         />
         {uploading ? <p className="text-sm text-slate-500">Uploading image...</p> : null}
-        <button className="rounded bg-green-600 px-4 py-2 text-white">Save Product</button>
+        <div className="flex gap-2">
+          <button className="rounded bg-green-600 px-4 py-2 text-white">
+            {editingId ? "Update Product" : "Save Product"}
+          </button>
+          {editingId ? (
+            <button
+              type="button"
+              onClick={() => {
+                setEditingId(null);
+                setForm(baseProduct);
+              }}
+              className="rounded border px-4 py-2"
+            >
+              Cancel
+            </button>
+          ) : null}
+        </div>
       </form>
       <div className="rounded-xl bg-white p-4 shadow-sm">
         <h2 className="text-xl font-bold">Products</h2>
@@ -110,11 +161,24 @@ export default function AdminProductsPage() {
             <div key={p._id} className="flex items-center justify-between rounded border p-2">
               <div>
                 <p className="font-medium">{p.name}</p>
-                <p className="text-xs text-slate-500">Rs {p.price}</p>
+                <p className="text-xs text-slate-500">
+                  Rs {p.price} | Order: {p.order || 0}
+                </p>
               </div>
-              <button onClick={() => remove(p._id)} className="rounded border px-3 py-1 text-sm">
-                Delete
-              </button>
+              <div className="flex gap-1">
+                <button onClick={() => moveOrder(p, "up")} className="rounded border px-2 py-1 text-xs">
+                  Up
+                </button>
+                <button onClick={() => moveOrder(p, "down")} className="rounded border px-2 py-1 text-xs">
+                  Down
+                </button>
+                <button onClick={() => startEdit(p)} className="rounded border px-3 py-1 text-sm">
+                  Edit
+                </button>
+                <button onClick={() => remove(p._id)} className="rounded border px-3 py-1 text-sm">
+                  Delete
+                </button>
+              </div>
             </div>
           ))}
         </div>
