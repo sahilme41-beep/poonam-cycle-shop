@@ -13,7 +13,7 @@ export default function AboutPage() {
           Your trusted local destination for premium cycles, electric ride-ons, and kids toys &mdash; located near Kaswam Hospital, Gandhinagar, Kolhapur, Maharashtra.
         </p>
 
-        <div className="mt-8 grid gap-6 md:grid-cols-3">
+        <div className="mt-8 grid gap-6 sm:grid-cols-2 md:grid-cols-4">
           <div className="rounded-xl border border-green-100 bg-[#F1F8F1] p-5">
             <div className="mb-3 text-3xl">🚲</div>
             <h3 className="font-bold text-brand-ink">Electric Cycles</h3>
@@ -25,9 +25,14 @@ export default function AboutPage() {
             <p className="mt-1 text-sm text-slate-600">Battery-operated jeeps, cars, scooters, and bikes for kids &mdash; in multiple fun colours.</p>
           </div>
           <div className="rounded-xl border border-green-100 bg-[#F1F8F1] p-5">
-            <div className="mb-3 text-3xl">🛺</div>
+            <div className="mb-3 text-3xl">�</div>
             <h3 className="font-bold text-brand-ink">Tricycles</h3>
             <p className="mt-1 text-sm text-slate-600">Stable and comfortable three-wheelers for toddlers and young children of all ages.</p>
+          </div>
+          <div className="rounded-xl border border-green-100 bg-[#F1F8F1] p-5">
+            <div className="mb-3 text-3xl">🚵</div>
+            <h3 className="font-bold text-brand-ink">Kids &amp; MTB Cycles</h3>
+            <p className="mt-1 text-sm text-slate-600">Kids bicycles, mountain bikes, and gear cycles for all age groups.</p>
           </div>
         </div>
 

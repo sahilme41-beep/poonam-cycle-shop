@@ -16,6 +16,11 @@ export const STORE_CATEGORIES = [
     subcategories: ["Cars", "Bikes", "Jeeps", "Scooters"]
   },
   { name: "Tricycles", slug: "tricycles", subcategories: [] },
+  {
+    name: "Kids & MTB Cycles",
+    slug: "kids-mtb-cycles",
+    subcategories: ["Kids Cycles", "MTB Cycles", "Gear Cycles"]
+  },
 ];
 
 export function formatCategorySlug(name: string) {
@@ -35,8 +40,8 @@ export function resolveStoreCategory(rawCategory: string, rawName = "", rawDescr
     return STORE_CATEGORIES.find((c) => c.slug === "electric-cars-toys")!;
   }
   if (cat.includes("electric cycle")) return STORE_CATEGORIES.find((c) => c.slug === "electric-cycles")!;
-  if (cat.includes("mtb") || cat.includes("gear") || cat.includes("kids cycle")) {
-    return STORE_CATEGORIES.find((c) => c.slug === "tricycles")!;
+  if (cat.includes("kids & mtb") || cat.includes("kids-mtb") || cat.includes("mtb") || cat.includes("gear") || cat.includes("kids cycle")) {
+    return STORE_CATEGORIES.find((c) => c.slug === "kids-mtb-cycles")!;
   }
   const toyKeywords = [
     "ride-on",

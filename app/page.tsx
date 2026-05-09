@@ -10,13 +10,16 @@ const categoryCards: Record<string, string> = {
   tricycles:
     "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?q=80&w=900&auto=format&fit=crop",
   "electric-cycles":
-    "https://images.unsplash.com/photo-1511994298241-608e28f14fde?q=80&w=900&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1511994298241-608e28f14fde?q=80&w=900&auto=format&fit=crop",
+  "kids-mtb-cycles":
+    "https://images.unsplash.com/photo-1507035895480-2b3156c31fc8?q=80&w=900&auto=format&fit=crop"
 };
 
 const categoryDescriptions: Record<string, string> = {
   "electric-cars-toys": "Ride-ons, cars, jeeps and scooters for kids",
   tricycles: "Stable and comfortable three-wheelers",
-  "electric-cycles": "Daily comfort cycles with electric support"
+  "electric-cycles": "Daily comfort cycles with electric support",
+  "kids-mtb-cycles": "Kids bicycles, MTB and gear cycles for all ages"
 };
 
 const trustBadges = [
@@ -135,6 +138,41 @@ export default async function Home() {
           </div>
         </section>
       )}
+
+      {/* Map / Visit Us section */}
+      <section className="bg-white py-14">
+        <div className="mx-auto max-w-7xl px-4">
+          <div className="mb-6 text-center">
+            <p className="text-xs font-semibold uppercase tracking-widest text-brand-green">Find Us</p>
+            <h2 className="mt-1 text-3xl font-extrabold text-brand-ink">Visit Our Store</h2>
+            <p className="mt-2 text-sm text-slate-500">Near Kaswam Hospital, Gandhinagar, Kolhapur, Maharashtra</p>
+          </div>
+          <div className="overflow-hidden rounded-2xl border border-green-100 shadow-md">
+            <iframe
+              className="h-80 w-full md:h-96"
+              src="https://maps.google.com/maps?q=Poonam+Cycle+%26+Toy+World+Gandhinagar+Kolhapur&t=&z=16&ie=UTF8&iwloc=&output=embed"
+              loading="lazy"
+              allowFullScreen
+            />
+          </div>
+          <div className="mt-5 flex flex-wrap justify-center gap-4">
+            <a
+              href="https://maps.app.goo.gl/Mgohw4hjo6Xd19YJ9"
+              target="_blank"
+              rel="noreferrer"
+              className="rounded-xl bg-brand-green px-6 py-3 font-bold text-white hover:bg-brand-green2"
+            >
+              📍 Open in Google Maps
+            </a>
+            <a
+              href="tel:7588267528"
+              className="rounded-xl border border-brand-green px-6 py-3 font-semibold text-brand-green hover:bg-brand-greenlight"
+            >
+              📞 Call Us
+            </a>
+          </div>
+        </div>
+      </section>
 
       {/* Instagram / CTA strip */}
       <section className="bg-brand-ink py-14 text-center">
