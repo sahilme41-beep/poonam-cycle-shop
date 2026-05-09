@@ -1,6 +1,6 @@
 export const metadata = {
   title: "About | Poonam Cycle & Toy World",
-  description: "About Poonam Cycle & Toy World, Kolhapur — your trusted destination for cycles, electric ride-ons, and kids toys."
+  description: "Your trusted destination for premium cycles, kids electric ride-ons and toys in Kolhapur. Near Keswani Hospital, Gandhinagar, Kolhapur, Maharashtra."
 };
 
 const categories = [
@@ -30,7 +30,7 @@ export default function AboutPage() {
             <p className="text-xs font-semibold uppercase tracking-widest text-brand-green">About Us</p>
             <h1 className="mt-1 text-3xl font-extrabold text-white sm:text-4xl md:text-5xl">Poonam Cycle &amp; Toy World</h1>
             <p className="mt-2 max-w-xl text-sm text-white/70 sm:text-base">
-              Kolhapur&apos;s most trusted destination for cycles, electric ride-ons &amp; kids toys.
+              Your trusted destination for premium cycles, kids electric ride-ons &amp; toys in Kolhapur.
             </p>
           </div>
         </div>
@@ -40,9 +40,9 @@ export default function AboutPage() {
         {/* Intro */}
         <div className="rounded-2xl border border-green-100 bg-white p-6 shadow-sm">
           <p className="text-base leading-8 text-slate-600">
-            Located near Kaswam Hospital, Gandhinagar, Kolhapur, Maharashtra — we are your go-to store
-            for premium cycles, electric ride-ons, and toys. Serving hundreds of families for years with
-            honest pricing and expert guidance.
+            Your trusted destination for premium cycles, kids electric ride-ons and toys in Kolhapur.
+            Located near Keswani Hospital, Gandhinagar, Kolhapur, Maharashtra — serving hundreds of
+            families for years with honest pricing and expert guidance.
           </p>
         </div>
 
