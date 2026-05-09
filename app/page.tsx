@@ -71,7 +71,7 @@ export default async function Home() {
         </div>
         {/* Top 2 large + Bottom 2 large grid */}
         <div className="grid grid-cols-2 gap-4 sm:gap-5">
-          {categories.map((c, i) => (
+          {categories.map((c) => (
             <Link
               key={c.slug}
               href={`/category/${c.slug}`}
