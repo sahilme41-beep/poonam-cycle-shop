@@ -34,6 +34,8 @@ export default function Footer() {
       </div>
       <div className="border-t border-slate-800 py-4 text-center text-xs text-slate-500">
         © {new Date().getFullYear()} Poonam Cycle & Toy World. All rights reserved.
+        <span className="mx-2">·</span>
+        <Link href="/admin" className="hover:text-slate-300">Admin</Link>
       </div>
     </footer>
   );
