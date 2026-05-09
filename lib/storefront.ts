@@ -1,3 +1,4 @@
+import { unstable_noStore as noStore } from "next/cache";
 import { connectDB } from "@/lib/db";
 import { Category } from "@/models/Category";
 import { Product } from "@/models/Product";
@@ -35,6 +36,7 @@ function normalizeProductCategoryFields(products: any[]) {
 }
 
 export async function getStoreProducts() {
+  noStore();
   try {
     await connectDB();
     // Treat legacy docs (missing `visible`) as visible.
@@ -46,6 +48,7 @@ export async function getStoreProducts() {
 }
 
 export async function getFeaturedProducts(limit = 8) {
+  noStore();
   try {
     await connectDB();
     // Treat legacy docs (missing `visible`) as visible.
@@ -60,6 +63,7 @@ export async function getFeaturedProducts(limit = 8) {
 }
 
 export async function getStoreCategories() {
+  noStore();
   try {
     await connectDB();
     const categories = await Category.find().sort({ order: 1, createdAt: 1 }).lean();
@@ -71,6 +75,7 @@ export async function getStoreCategories() {
 }
 
 export async function getReviews(limit = 6) {
+  noStore();
   try {
     await connectDB();
     return await Review.find().sort({ createdAt: -1 }).limit(limit).lean();
@@ -80,6 +85,7 @@ export async function getReviews(limit = 6) {
 }
 
 export async function getStoreMediaSettings() {
+  noStore();
   const fallback = {
     homeBannerImages: [],
     categoryCardImages: {} as Record<string, string>

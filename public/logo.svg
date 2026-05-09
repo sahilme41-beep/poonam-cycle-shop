@@ -1,50 +1,62 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 100" width="260" height="100">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 120" width="340" height="120">
   <!-- Grey background -->
-  <rect width="260" height="100" rx="10" fill="#6e6e6e"/>
-  <!-- Black bottom bar -->
-  <rect x="0" y="68" width="260" height="32" rx="0" fill="#111111"/>
-  <rect x="0" y="78" width="260" height="22" rx="0" fill="#111111"/>
-  <rect x="0" y="68" width="260" height="32" fill="#111111"/>
-  <!-- Rounded bottom corners matching outer rect -->
-  <rect x="0" y="86" width="10" height="14" rx="0" fill="#111111"/>
-  <rect x="250" y="86" width="10" height="14" rx="0" fill="#111111"/>
+  <rect width="340" height="120" rx="6" fill="#7a7a7a"/>
 
-  <!-- P -->
-  <text x="12" y="62" font-family="Arial Black, Impact, sans-serif" font-weight="900" font-size="50" fill="white">P</text>
+  <!-- Black bottom rounded bar -->
+  <rect x="8" y="80" width="324" height="34" rx="6" fill="#111111"/>
 
-  <!-- Cyclist icon replacing first O (centered around x=72) -->
-  <g transform="translate(50, 10) scale(0.85)">
+  <!-- POONAM text: P -->
+  <text x="10" y="74" font-family="Arial Black, Arial, sans-serif" font-weight="900" font-size="66" fill="white" letter-spacing="-1">P</text>
+
+  <!-- First O replaced by cyclist - positioned where first O would be (approx x=55) -->
+  <!-- Cyclist silhouette in green, leaning forward on a road bike -->
+  <g transform="translate(52, 4)">
     <!-- Rear wheel -->
-    <circle cx="12" cy="42" r="12" fill="none" stroke="#5DBB3F" stroke-width="3.5"/>
+    <circle cx="14" cy="52" r="14" fill="none" stroke="#4CAF50" stroke-width="4"/>
     <!-- Front wheel -->
-    <circle cx="54" cy="42" r="12" fill="none" stroke="#5DBB3F" stroke-width="3.5"/>
-    <!-- Frame: chainstay -->
-    <line x1="12" y1="42" x2="33" y2="42" stroke="#5DBB3F" stroke-width="3"/>
-    <!-- Frame: seat tube -->
-    <line x1="33" y1="42" x2="30" y2="22" stroke="#5DBB3F" stroke-width="3"/>
-    <!-- Frame: top tube / down tube -->
-    <line x1="30" y1="22" x2="54" y2="42" stroke="#5DBB3F" stroke-width="3"/>
-    <line x1="12" y1="42" x2="30" y2="22" stroke="#5DBB3F" stroke-width="3"/>
-    <!-- Handlebar -->
-    <line x1="44" y1="23" x2="56" y2="21" stroke="#5DBB3F" stroke-width="3"/>
-    <line x1="54" y1="30" x2="52" y2="21" stroke="#5DBB3F" stroke-width="2.5"/>
+    <circle cx="62" cy="52" r="14" fill="none" stroke="#4CAF50" stroke-width="4"/>
+    <!-- Bottom bracket / pedal area -->
+    <circle cx="38" cy="52" r="3" fill="#4CAF50"/>
+    <!-- Chain stay rear -->
+    <line x1="14" y1="52" x2="38" y2="52" stroke="#4CAF50" stroke-width="3.5"/>
+    <!-- Seat tube -->
+    <line x1="38" y1="52" x2="34" y2="28" stroke="#4CAF50" stroke-width="3.5"/>
+    <!-- Down tube -->
+    <line x1="62" y1="52" x2="34" y2="28" stroke="#4CAF50" stroke-width="3.5"/>
+    <!-- Chain stay front (to fork) -->
+    <line x1="62" y1="52" x2="56" y2="36" stroke="#4CAF50" stroke-width="3.5"/>
+    <!-- Fork -->
+    <line x1="56" y1="36" x2="62" y2="52" stroke="#4CAF50" stroke-width="3.5"/>
+    <!-- Top tube -->
+    <line x1="34" y1="28" x2="54" y2="26" stroke="#4CAF50" stroke-width="3.5"/>
+    <!-- Handlebar stem -->
+    <line x1="54" y1="26" x2="57" y2="34" stroke="#4CAF50" stroke-width="3"/>
+    <!-- Handlebar drop -->
+    <line x1="54" y1="26" x2="64" y2="28" stroke="#4CAF50" stroke-width="3"/>
     <!-- Seat -->
-    <line x1="24" y1="24" x2="33" y2="22" stroke="#5DBB3F" stroke-width="3"/>
-    <!-- Rider head -->
-    <circle cx="53" cy="11" r="7" fill="#5DBB3F"/>
-    <!-- Rider body -->
-    <line x1="53" y1="18" x2="44" y2="28" stroke="#5DBB3F" stroke-width="3"/>
-    <!-- Rider arm to handlebar -->
-    <line x1="44" y1="28" x2="50" y2="23" stroke="#5DBB3F" stroke-width="2.5"/>
-    <!-- Rider leg 1 -->
-    <line x1="44" y1="28" x2="38" y2="38" stroke="#5DBB3F" stroke-width="3"/>
-    <!-- Rider leg 2 -->
-    <line x1="44" y1="28" x2="48" y2="37" stroke="#5DBB3F" stroke-width="2.5"/>
+    <line x1="28" y1="27" x2="38" y2="27" stroke="#4CAF50" stroke-width="3"/>
+    <!-- Rider head (leaning forward aggressively) -->
+    <circle cx="60" cy="12" r="8" fill="#4CAF50"/>
+    <!-- Rider torso (leaning very forward, racing position) -->
+    <line x1="60" y1="20" x2="54" y2="28" stroke="#4CAF50" stroke-width="4"/>
+    <!-- Rider lower back to seat -->
+    <line x1="54" y1="28" x2="34" y2="26" stroke="#4CAF50" stroke-width="4"/>
+    <!-- Rider arm reaching to handlebar -->
+    <line x1="54" y1="28" x2="62" y2="28" stroke="#4CAF50" stroke-width="3.5"/>
+    <!-- Rider leg down -->
+    <line x1="54" y1="28" x2="46" y2="44" stroke="#4CAF50" stroke-width="3.5"/>
+    <line x1="46" y1="44" x2="38" y2="52" stroke="#4CAF50" stroke-width="3"/>
+    <!-- Rider leg up -->
+    <line x1="54" y1="28" x2="52" y2="40" stroke="#4CAF50" stroke-width="3"/>
+    <line x1="52" y1="40" x2="60" y2="46" stroke="#4CAF50" stroke-width="3"/>
   </g>
 
-  <!-- NAM (continues after cyclist icon, approx x=110) -->
-  <text x="108" y="62" font-family="Arial Black, Impact, sans-serif" font-weight="900" font-size="50" fill="white">NAM</text>
+  <!-- Second O -->
+  <text x="122" y="74" font-family="Arial Black, Arial, sans-serif" font-weight="900" font-size="66" fill="white" letter-spacing="-1">O</text>
 
-  <!-- Bottom subtitle -->
-  <text x="130" y="89" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="14" fill="white" text-anchor="middle" letter-spacing="3">CYCLE &amp; TOY WORLD</text>
+  <!-- NAM -->
+  <text x="175" y="74" font-family="Arial Black, Arial, sans-serif" font-weight="900" font-size="66" fill="white" letter-spacing="-1">NAM</text>
+
+  <!-- Bottom bar text: CYCLE & TOY WORLD -->
+  <text x="170" y="107" font-family="Arial Black, Arial, sans-serif" font-weight="800" font-size="18" fill="white" text-anchor="middle" letter-spacing="3">CYCLE &amp; TOY WORLD</text>
 </svg>

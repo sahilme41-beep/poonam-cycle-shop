@@ -6,7 +6,7 @@ export default function Footer() {
     <footer className="mt-16 border-t border-green-100 bg-brand-ink">
       <div className="mx-auto grid max-w-7xl gap-8 px-4 py-12 text-sm md:grid-cols-4">
         <div className="md:col-span-2">
-          <Image src="/logo.svg" alt="Poonam Cycle & Toy World" width={150} height={56} className="h-14 w-auto brightness-0 invert" />
+          <Image src="/logo.svg" alt="Poonam Cycle & Toy World" width={180} height={64} className="h-14 w-auto" />
           <p className="mt-3 max-w-xs text-slate-400">Your trusted destination for premium cycles, kids electric rides, and toys in Kolhapur.</p>
           <p className="mt-3 text-slate-400">Near Kaswam Hospital, Gandhinagar,<br/>Kolhapur, Maharashtra</p>
         </div>
