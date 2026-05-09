@@ -40,3 +40,11 @@ export function resolveStoreCategory(rawCategory: string, rawName = "", rawDescr
   }
   return STORE_CATEGORIES.find((c) => c.slug === "electric-cars-toys")!;
 }
+
+export function normalizeCategoryName(rawCategory: string, rawName = "", rawDescription = "") {
+  return resolveStoreCategory(rawCategory, rawName, rawDescription).name;
+}
+
+export function normalizeCategorySlug(rawCategory: string, rawName = "", rawDescription = "") {
+  return resolveStoreCategory(rawCategory, rawName, rawDescription).slug;
+}
