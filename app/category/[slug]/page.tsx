@@ -74,7 +74,7 @@ export default async function CategoryPage({
             <div className="mb-2 flex items-center gap-2">
               <Link href="/" className="text-xs text-white/70 hover:text-white">Home</Link>
               <span className="text-white/40">›</span>
-              <span className="text-xs text-white/70">Categories</span>
+              <Link href="/shop" className="text-xs text-white/70 hover:text-white">Categories</Link>
               <span className="text-white/40">›</span>
               <span className="text-xs text-white font-semibold">{categoryName}</span>
             </div>

@@ -1,6 +1,6 @@
 export const BUSINESS = {
   name: "Poonam Cycle & Toy World",
-  address: "Near Kaswam Hospital, Gandhinagar, Kolhapur, Maharashtra",
+  address: "Near Keswani Hospital, Gandhinagar, Kolhapur, Maharashtra",
   mobile: "7588267528",
   sales: "9359165468",
   inquiry: ["9422043565", "7057902565"],

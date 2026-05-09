@@ -46,7 +46,7 @@ export default function AdminProductsPage() {
       setForm(baseProduct);
       setEditingId(null);
       load();
-    } else toast.error("Failed to add product");
+    } else toast.error(isEdit ? "Failed to update product" : "Failed to add product");
   }
 
   async function remove(id: string) {
@@ -90,7 +90,10 @@ export default function AdminProductsPage() {
     }
   }
 
+  const isDirty = JSON.stringify(form) !== JSON.stringify(baseProduct);
+
   function startEdit(product: any) {
+    if (isDirty && !confirm("You have unsaved changes. Discard and edit this product?")) return;
     setForm({
       name: product.name,
       price: product.price,
