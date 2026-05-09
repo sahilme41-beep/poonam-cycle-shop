@@ -69,13 +69,12 @@ export default async function Home() {
           <h2 className="mt-1 text-4xl font-extrabold text-brand-ink">Explore Our Collection</h2>
           <p className="mt-2 text-slate-500">Find the perfect ride for every age and adventure</p>
         </div>
-        {/* Top 2 large + Bottom 2 large grid */}
-        <div className="grid grid-cols-2 gap-4 sm:gap-5">
+        <div className="grid grid-cols-2 gap-5 lg:grid-cols-4">
           {categories.map((c) => (
             <Link
               key={c.slug}
               href={`/category/${c.slug}`}
-              className="group relative overflow-hidden rounded-2xl shadow-md transition hover:-translate-y-1 hover:shadow-xl"
+              className="group relative block overflow-hidden rounded-2xl shadow-md transition hover:-translate-y-1 hover:shadow-xl"
             >
               <img
                 src={mergedCategoryCards[c.slug] || "https://images.unsplash.com/photo-1507035895480-2b3156c31fc8?w=600"}
