@@ -127,8 +127,8 @@ export default async function Home() {
                       <span key={s} className={s <= r.rating ? "star-filled" : "star-empty"}>★</span>
                     ))}
                   </div>
-                  <p className="mt-3 text-sm leading-relaxed text-slate-600">"{r.message}"</p>
-                  <p className="mt-3 text-sm font-bold text-brand-ink">— {r.name}</p>
+                  <p className="mt-3 text-sm leading-relaxed text-slate-600">&ldquo;{r.message}&rdquo;</p>
+                  <p className="mt-3 text-sm font-bold text-brand-ink">&mdash; {r.name}</p>
                 </div>
               ))}
             </div>
