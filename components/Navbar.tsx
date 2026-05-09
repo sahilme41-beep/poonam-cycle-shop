@@ -82,8 +82,8 @@ export default function Navbar() {
               Categories <ChevronDown size={14} className={`transition-transform ${catOpen ? "rotate-180" : ""}`} />
             </button>
             {catOpen && (
-              <div className="absolute left-0 top-full z-50 mt-2 w-[580px] rounded-2xl border border-green-100 bg-white p-5 shadow-xl">
-                <div className="grid grid-cols-3 gap-3">
+              <div className="absolute left-0 top-full z-50 mt-2 w-[480px] rounded-2xl border border-green-100 bg-white p-5 shadow-xl">
+                <div className="grid grid-cols-2 gap-3">
                   {navCategories.map((category) => (
                     <div key={category.slug} className="rounded-xl border border-green-100 bg-brand-greenlight p-3 hover:border-brand-green">
                       <Link

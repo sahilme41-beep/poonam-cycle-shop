@@ -70,15 +70,15 @@ export default function CategoryHeroSlider({
   const active = mergedSlides[index];
 
   return (
-    <section className="relative overflow-hidden rounded-2xl border border-[#e9d8c7] bg-brand-cream shadow-sm">
+    <section className="relative overflow-hidden rounded-2xl border border-green-100 bg-white shadow-sm">
       <img src={active.image} alt={active.title} className="h-44 w-full object-cover sm:h-56" />
       <div className="absolute inset-0 bg-black/35" />
       <div className="absolute inset-0 flex items-center px-4">
         <div className="w-full">
-          <div className="max-w-2xl rounded-2xl bg-brand-cream/92 p-4 shadow-lg backdrop-blur sm:p-6">
-            <p className="text-xs font-semibold tracking-wide text-brand-brown sm:text-sm">{active.subtitle}</p>
+          <div className="max-w-2xl rounded-2xl bg-white/90 p-4 shadow-lg backdrop-blur sm:p-6">
+            <p className="text-xs font-semibold tracking-wide text-brand-green sm:text-sm">{active.subtitle}</p>
             <h2 className="mt-1 text-xl font-extrabold text-brand-ink sm:text-3xl">{active.title}</h2>
-            <Link href={active.cta} className="mt-3 inline-block rounded-lg bg-brand-brown px-4 py-2 text-sm font-semibold text-white hover:bg-brand-brown2">
+            <Link href={active.cta} className="mt-3 inline-block rounded-lg bg-brand-green px-4 py-2 text-sm font-semibold text-white hover:bg-brand-green2">
               Explore Collection
             </Link>
           </div>

@@ -152,7 +152,6 @@ export default async function Home() {
               className="h-80 w-full md:h-96"
               src="https://maps.google.com/maps?q=Poonam+Cycle+%26+Toy+World+Gandhinagar+Kolhapur&t=&z=16&ie=UTF8&iwloc=&output=embed"
               loading="lazy"
-              allowFullScreen
             />
           </div>
           <div className="mt-5 flex flex-wrap justify-center gap-4">
