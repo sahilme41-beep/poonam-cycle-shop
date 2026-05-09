@@ -5,7 +5,13 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        brand: "#15803d"
+        brand: {
+          brown: "#6B3F1D",
+          brown2: "#7A4A23",
+          beige: "#F7F0E6",
+          cream: "#FFF9F1",
+          ink: "#1F1B16"
+        }
       }
     }
   },

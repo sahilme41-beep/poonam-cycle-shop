@@ -1,8 +1,21 @@
-export default function AnnouncementBar() {
+import { connectDB } from "@/lib/db";
+import { Setting } from "@/models/Setting";
+
+export default async function AnnouncementBar() {
+  let text = "New arrivals from our latest collections. Call 7588267528";
+  try {
+    await connectDB();
+    const announcement: any = await Setting.findOne({ key: "announcement" }).lean();
+    if (announcement && typeof announcement.value === "string" && announcement.value.trim()) {
+      text = announcement.value;
+    }
+  } catch {
+    // fallback to static text when DB isn't reachable
+  }
   return (
-    <div className="fixed top-0 left-0 z-50 w-full bg-green-600 py-2 text-sm text-white">
+    <div className="fixed top-0 left-0 z-50 w-full bg-amber-900 py-2 text-sm text-amber-50">
       <div className="marquee px-4">
-        Special Offer: Up to 20% off on Electric Ride-Ons | Free local delivery in Kolhapur
+        {text}
       </div>
     </div>
   );

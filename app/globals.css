@@ -3,7 +3,24 @@
 @tailwind utilities;
 
 body {
-  @apply bg-slate-50 text-slate-900;
+  @apply bg-brand-beige text-brand-ink antialiased;
+}
+
+a,
+button {
+  @apply transition duration-200;
+}
+
+.card-surface {
+  @apply rounded-2xl border border-[#e9d8c7] bg-brand-cream shadow-sm;
+}
+
+.section-wrap {
+  @apply mx-auto max-w-7xl px-4;
+}
+
+.gradient-text {
+  @apply bg-gradient-to-r from-brand-brown via-brand-brown2 to-amber-900 bg-clip-text text-transparent;
 }
 
 @keyframes marquee {

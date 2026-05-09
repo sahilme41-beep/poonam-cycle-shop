@@ -9,7 +9,7 @@ const ProductSchema = new Schema(
     stock: { type: Number, default: 0 },
     visible: { type: Boolean, default: true },
     description: { type: String, default: "" },
-    variants: [{ color: String, image: String }],
+    variants: [{ color: String, image: String, images: [{ type: String }] }],
     features: [{ type: String }],
     specs: [{ key: String, value: String }],
     featured: { type: Boolean, default: false },

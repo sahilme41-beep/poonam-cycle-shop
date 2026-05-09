@@ -1,7 +1,8 @@
 "use client";
 
-import { signIn } from "next-auth/react";
 import { FormEvent, useState } from "react";
+
+export const dynamic = "force-dynamic";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
@@ -9,6 +10,7 @@ export default function LoginPage() {
 
   async function submit(e: FormEvent) {
     e.preventDefault();
+    const { signIn } = await import("next-auth/react");
     await signIn("credentials", { email, password, callbackUrl: "/admin" });
   }
 

@@ -1,35 +1,73 @@
-export default function Home() {
+import ProductCard from "@/components/ProductCard";
+import { getFeaturedProducts, getStoreCategories } from "@/lib/storefront";
+import Link from "next/link";
+import HomeHeroSlider from "@/components/HomeHeroSlider";
+
+const categoryCards: Record<string, string> = {
+  "electric-ride-on":
+    "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?q=80&w=900&auto=format&fit=crop",
+  tricycles:
+    "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?q=80&w=900&auto=format&fit=crop",
+  "kids-cycles":
+    "https://images.unsplash.com/photo-1471506480208-91b3a4cc78be?q=80&w=900&auto=format&fit=crop",
+  "gear-cycles":
+    "https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=900&auto=format&fit=crop",
+  "mtb-cycles":
+    "https://images.unsplash.com/photo-1576858574144-9ae1ebcf5ae5?q=80&w=900&auto=format&fit=crop"
+};
+
+const categoryDescriptions: Record<string, string> = {
+  "electric-ride-on": "Eco-friendly power-assisted rides",
+  tricycles: "Stable and comfortable three-wheelers",
+  "kids-cycles": "Safe and fun bikes for children",
+  "gear-cycles": "Performance bikes for every rider",
+  "mtb-cycles": "Rugged bikes for off-road adventures"
+};
+
+export const dynamic = "force-dynamic";
+
+export default async function Home() {
+  const [categories, featuredProducts] = await Promise.all([
+    getStoreCategories(),
+    getFeaturedProducts(8)
+  ]);
+
   return (
-    <div>
-      <section
-        className="flex h-[70vh] items-center justify-center bg-cover bg-center"
-        style={{
-          backgroundImage:
-            "url('https://images.unsplash.com/photo-1541625602330-2277a4c46182?q=80&w=1800&auto=format&fit=crop')"
-        }}
-      >
-        <div className="rounded-xl bg-black/45 p-6 text-center text-white">
-          <h1 className="text-4xl font-bold">Poonam Cycle & Toy World</h1>
-          <p className="mt-2">Premium cycles and toys in Kolhapur</p>
-          <a href="/shop" className="mt-4 inline-block rounded bg-green-600 px-4 py-2">
-            Explore Products
-          </a>
+    <div className="pb-10">
+      <HomeHeroSlider />
+      <section className="mx-auto max-w-7xl px-4 py-12">
+        <h2 className="mb-5 text-center text-2xl font-bold text-brand-ink">Explore Our Collection</h2>
+        <div className="grid grid-cols-2 gap-3 md:grid-cols-5">
+          {categories.map((c: any) => (
+            <Link
+              key={c.slug}
+              href={`/category/${c.slug}`}
+              className="group overflow-hidden rounded-xl border border-[#e9d8c7] bg-brand-cream shadow-sm hover:shadow-md"
+            >
+              <img
+                src={categoryCards[c.slug] || "https://images.unsplash.com/photo-1507035895480-2b3156c31fc8?w=600"}
+                alt={c.name}
+                className="h-28 w-full object-cover sm:h-40"
+              />
+              <div className="p-3">
+                <p className="font-semibold text-brand-ink group-hover:text-brand-brown">{c.name}</p>
+                <p className="mt-1 text-xs text-slate-600">{categoryDescriptions[c.slug] || "Explore the latest collection"}</p>
+                <p className="mt-2 text-xs font-semibold text-brand-brown">
+                  Explore Collection <span aria-hidden>→</span>
+                </p>
+              </div>
+            </Link>
+          ))}
         </div>
       </section>
-      <section className="mx-auto max-w-7xl px-4 py-10">
-        <h2 className="mb-4 text-2xl font-bold">Categories</h2>
-        <div className="grid gap-3 md:grid-cols-3">
-          {[
-            "MTB Cycles",
-            "Gear Cycles",
-            "Kids Cycles",
-            "Electric Ride-On",
-            "Tricycles",
-            "Electric Cars & Toys"
-          ].map((c) => (
-            <a key={c} href={`/shop?category=${encodeURIComponent(c)}`} className="rounded-lg bg-white p-4 shadow-sm">
-              {c}
-            </a>
+      <section className="mx-auto max-w-7xl px-4 pb-12">
+        <div className="mb-4 flex items-center justify-between">
+          <h2 className="text-2xl font-bold text-brand-ink">Featured Products</h2>
+          <Link href="/shop" className="text-sm font-semibold text-brand-brown hover:text-brand-brown2">View all</Link>
+        </div>
+        <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
+          {featuredProducts.map((p: any) => (
+            <ProductCard key={String(p._id)} product={{ ...p, _id: String(p._id) }} />
           ))}
         </div>
       </section>

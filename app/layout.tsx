@@ -6,10 +6,19 @@ import Navbar from "@/components/Navbar";
 import WhatsappFloating from "@/components/WhatsappFloating";
 import { Toaster } from "sonner";
 
+function getMetadataBase() {
+  const rawUrl = process.env.NEXTAUTH_URL?.trim();
+  try {
+    return new URL(rawUrl || "http://localhost:3000");
+  } catch {
+    return new URL("http://localhost:3000");
+  }
+}
+
 export const metadata: Metadata = {
   title: "Poonam Cycle & Toy World",
   description: "Cycle and toy shop website for Kolhapur",
-  metadataBase: new URL(process.env.NEXTAUTH_URL || "http://localhost:3000"),
+  metadataBase: getMetadataBase(),
   openGraph: {
     title: "Poonam Cycle & Toy World",
     description: "Premium cycles, kids rides, and electric toys in Kolhapur.",

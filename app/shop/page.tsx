@@ -1,4 +1,7 @@
 import ProductCard from "@/components/ProductCard";
+import { getStoreProducts } from "@/lib/storefront";
+
+export const dynamic = "force-dynamic";
 
 export const metadata = {
   title: "Shop | Poonam Cycle & Toy World",
@@ -10,9 +13,7 @@ export default async function ShopPage({
 }: {
   searchParams: { q?: string; category?: string; sort?: string; page?: string; min?: string; max?: string; stock?: string };
 }) {
-  const base = process.env.NEXTAUTH_URL || "http://localhost:3000";
-  const res = await fetch(`${base}/api/products`, { cache: "no-store" });
-  let products = await res.json();
+  let products: any[] = await getStoreProducts();
 
   const q = (searchParams.q || "").toLowerCase();
   const min = Number(searchParams.min || 0);
@@ -41,21 +42,24 @@ export default async function ShopPage({
 
   return (
     <div className="mx-auto max-w-7xl px-4 py-8">
-      <h1 className="mb-4 text-3xl font-bold">Shop</h1>
-      <div className="mb-4 flex flex-wrap gap-2 text-sm">
-        <a className="rounded border px-3 py-1" href="/shop?stock=in">In Stock</a>
-        <a className="rounded border px-3 py-1" href="/shop?sort=price_asc">Price Low to High</a>
-        <a className="rounded border px-3 py-1" href="/shop?sort=price_desc">Price High to Low</a>
-        <a className="rounded border px-3 py-1" href="/shop?min=5000&max=20000">Rs 5k - 20k</a>
+      <h1 className="mb-1 text-3xl font-bold text-brand-ink">Shop</h1>
+      <p className="mb-5 text-sm text-slate-600">Showing {products.length} products</p>
+      <div className="mb-5 flex flex-wrap gap-2 text-sm">
+        <a className="rounded-full border border-[#e0cdbb] bg-brand-cream px-3 py-1.5 hover:border-brand-brown hover:text-brand-brown" href="/shop?stock=in">In Stock</a>
+        <a className="rounded-full border border-[#e0cdbb] bg-brand-cream px-3 py-1.5 hover:border-brand-brown hover:text-brand-brown" href="/shop?sort=price_asc">Price Low to High</a>
+        <a className="rounded-full border border-[#e0cdbb] bg-brand-cream px-3 py-1.5 hover:border-brand-brown hover:text-brand-brown" href="/shop?sort=price_desc">Price High to Low</a>
+        <a className="rounded-full border border-[#e0cdbb] bg-brand-cream px-3 py-1.5 hover:border-brand-brown hover:text-brand-brown" href="/shop?min=5000&max=20000">Rs 5k - 20k</a>
+        <a className="rounded-full border border-[#e0cdbb] bg-brand-cream px-3 py-1.5 hover:border-brand-brown hover:text-brand-brown" href="/shop">Reset</a>
       </div>
-      <div className="grid gap-4 md:grid-cols-4">
+      <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
         {pagedProducts.map((p: any) => (
           <ProductCard key={p._id} product={p} />
         ))}
       </div>
+      {!pagedProducts.length ? <p className="mt-8 text-center text-slate-500">No products match your filters.</p> : null}
       <div className="mt-6 flex items-center justify-center gap-2">
         <a
-          className={`rounded border px-3 py-1 ${safePage <= 1 ? "pointer-events-none opacity-40" : ""}`}
+          className={`rounded border border-slate-300 bg-white px-3 py-1 ${safePage <= 1 ? "pointer-events-none opacity-40" : ""}`}
           href={`/shop?${new URLSearchParams({ ...Object.fromEntries(baseQuery.entries()), page: String(safePage - 1) }).toString()}`}
         >
           Prev
@@ -64,7 +68,7 @@ export default async function ShopPage({
           Page {safePage} of {totalPages}
         </span>
         <a
-          className={`rounded border px-3 py-1 ${safePage >= totalPages ? "pointer-events-none opacity-40" : ""}`}
+          className={`rounded border border-slate-300 bg-white px-3 py-1 ${safePage >= totalPages ? "pointer-events-none opacity-40" : ""}`}
           href={`/shop?${new URLSearchParams({ ...Object.fromEntries(baseQuery.entries()), page: String(safePage + 1) }).toString()}`}
         >
           Next

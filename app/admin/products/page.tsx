@@ -7,10 +7,10 @@ const baseProduct = {
   name: "",
   price: 0,
   stock: 0,
-  category: "MTB Cycles",
+  category: "Electric",
   subcategory: "",
   visible: true,
-  variants: [{ color: "Default", image: "" }],
+  variants: [{ color: "Default", image: "", images: [] as string[] }],
   features: [],
   specs: []
 };
@@ -75,7 +75,11 @@ export default function AdminProductsPage() {
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || "Upload failed");
-      setForm({ ...form, variants: [{ ...form.variants[0], image: data.url }] });
+      const existingImages = form.variants[0].images || [];
+      setForm({
+        ...form,
+        variants: [{ ...form.variants[0], image: data.url, images: [...existingImages, data.url] }]
+      });
       toast.success("Image uploaded");
     } catch {
       toast.error("Image upload failed");
@@ -92,7 +96,12 @@ export default function AdminProductsPage() {
       category: product.category,
       subcategory: product.subcategory || "",
       visible: product.visible ?? true,
-      variants: product.variants?.length ? product.variants : [{ color: "Default", image: "" }],
+      variants: product.variants?.length
+        ? product.variants.map((v: any) => ({
+            ...v,
+            images: v.images?.length ? v.images : v.image ? [v.image] : []
+          }))
+        : [{ color: "Default", image: "", images: [] }],
       features: product.features || [],
       specs: product.specs || []
     });
@@ -125,7 +134,29 @@ export default function AdminProductsPage() {
         <input className="w-full rounded border p-2" placeholder="Category" value={form.category} onChange={(e) => setForm({ ...form, category: e.target.value })} />
         <input className="w-full rounded border p-2" placeholder="Subcategory" value={form.subcategory} onChange={(e) => setForm({ ...form, subcategory: e.target.value })} />
         <input className="w-full rounded border p-2" placeholder="Variant color" value={form.variants[0].color} onChange={(e) => setForm({ ...form, variants: [{ ...form.variants[0], color: e.target.value }] })} />
-        <input className="w-full rounded border p-2" placeholder="Variant image URL" value={form.variants[0].image} onChange={(e) => setForm({ ...form, variants: [{ ...form.variants[0], image: e.target.value }] })} />
+        <input
+          className="w-full rounded border p-2"
+          placeholder="Variant image URL"
+          value={form.variants[0].image}
+          onChange={(e) =>
+            setForm({
+              ...form,
+              variants: [{ ...form.variants[0], image: e.target.value, images: [e.target.value] }]
+            })
+          }
+        />
+        <textarea
+          className="w-full rounded border p-2"
+          rows={3}
+          placeholder="Additional image URLs (comma separated)"
+          value={(form.variants[0].images || []).join(",")}
+          onChange={(e) =>
+            setForm({
+              ...form,
+              variants: [{ ...form.variants[0], images: e.target.value.split(",").map((v) => v.trim()).filter(Boolean) }]
+            })
+          }
+        />
         <input
           className="w-full rounded border p-2"
           type="file"
@@ -136,6 +167,11 @@ export default function AdminProductsPage() {
           }}
         />
         {uploading ? <p className="text-sm text-slate-500">Uploading image...</p> : null}
+        <div className="grid grid-cols-4 gap-2">
+          {(form.variants[0].images || []).map((img: string) => (
+            <img key={img} src={img} alt="Variant" className="h-16 w-full rounded object-cover" />
+          ))}
+        </div>
         <div className="flex gap-2">
           <button className="rounded bg-green-600 px-4 py-2 text-white">
             {editingId ? "Update Product" : "Save Product"}
