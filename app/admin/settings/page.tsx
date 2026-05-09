@@ -1,6 +1,7 @@
 "use client";
 
 import { FormEvent, useEffect, useState } from "react";
+import { toast } from "sonner";
 import { STORE_CATEGORIES } from "@/lib/constants";
 
 export default function AdminSettingsPage() {
@@ -51,95 +52,78 @@ export default function AdminSettingsPage() {
 
   async function save(e: FormEvent) {
     e.preventDefault();
-    await fetch("/api/settings", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ key: "announcement", value: announcement })
-    });
-    await fetch("/api/settings", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ key: "homeBannerImages", value: homeBannerImages })
-    });
-    await fetch("/api/settings", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ key: "categoryCardImages", value: categoryCardImages })
-    });
+    await Promise.all([
+      fetch("/api/settings", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ key: "announcement", value: announcement }) }),
+      fetch("/api/settings", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ key: "homeBannerImages", value: homeBannerImages }) }),
+      fetch("/api/settings", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ key: "categoryCardImages", value: categoryCardImages }) })
+    ]);
+    toast.success("Settings saved successfully!");
   }
 
   return (
     <div className="mx-auto max-w-4xl px-4 py-8">
-      <h1 className="text-2xl font-bold">Site Settings</h1>
-      <form onSubmit={save} className="mt-4 space-y-3 rounded bg-white p-4 shadow-sm">
-        <input className="w-full rounded border p-2" placeholder="Announcement bar text" value={announcement} onChange={(e) => setAnnouncement(e.target.value)} />
-        <div className="rounded border p-3">
-          <p className="mb-2 text-sm font-semibold">Home Banner Images (slider)</p>
-          <input
-            className="w-full rounded border p-2"
-            type="file"
-            accept="image/*"
-            onChange={(e) => {
-              const file = e.target.files?.[0];
-              if (file) uploadImage(file, "banner");
-            }}
-          />
-          <div className="mt-2 grid grid-cols-2 gap-2 md:grid-cols-5">
+      <div className="mb-6 flex items-center justify-between">
+        <div>
+          <p className="text-xs font-semibold uppercase tracking-widest text-brand-green">Admin</p>
+          <h1 className="text-2xl font-extrabold text-brand-ink">Site Settings</h1>
+        </div>
+        <a href="/admin" className="rounded-lg border border-green-200 px-4 py-2 text-sm font-medium text-brand-green hover:bg-brand-greenlight">← Dashboard</a>
+      </div>
+      <form onSubmit={save} className="space-y-5">
+
+        {/* Announcement */}
+        <div className="rounded-2xl border border-green-100 bg-white p-5 shadow-sm">
+          <p className="mb-2 font-bold text-brand-ink">📢 Announcement Bar</p>
+          <p className="mb-3 text-xs text-slate-500">This text scrolls across the top of every page.</p>
+          <input className="w-full rounded-xl border border-green-200 p-2.5 text-sm focus:border-brand-green focus:outline-none" placeholder="e.g. Free delivery on orders above ₹5000!" value={announcement} onChange={(e) => setAnnouncement(e.target.value)} />
+        </div>
+
+        {/* Home Banners */}
+        <div className="rounded-2xl border border-green-100 bg-white p-5 shadow-sm">
+          <p className="mb-1 font-bold text-brand-ink">🖼️ Home Banner Slider</p>
+          <p className="mb-3 text-xs text-slate-500">Upload up to 10 images for the homepage hero slider. Recommended size: 1200×600px.</p>
+          <input className="w-full rounded-xl border border-green-200 p-2 text-sm" type="file" accept="image/*"
+            onChange={(e) => { const f = e.target.files?.[0]; if (f) uploadImage(f, "banner"); }} />
+          {uploadingKey === "banner-default" && <p className="mt-1 text-xs text-brand-green">Uploading...</p>}
+          <div className="mt-3 grid grid-cols-2 gap-2 md:grid-cols-5">
             {homeBannerImages.map((img, idx) => (
-              <div key={`${img}-${idx}`} className="rounded border p-1">
-                <img src={img} alt={`Banner ${idx + 1}`} className="h-24 w-full rounded object-cover" />
-                <button
-                  type="button"
-                  className="mt-1 w-full rounded border px-2 py-1 text-xs"
-                  onClick={() => setHomeBannerImages((prev) => prev.filter((_, i) => i !== idx))}
-                >
-                  Remove
-                </button>
+              <div key={`${img}-${idx}`} className="rounded-xl border border-green-100 p-1">
+                <img src={img} alt={`Banner ${idx + 1}`} className="h-20 w-full rounded-lg object-cover" />
+                <button type="button" className="mt-1 w-full rounded border px-2 py-1 text-xs text-red-500 hover:bg-red-50"
+                  onClick={() => setHomeBannerImages((prev) => prev.filter((_, i) => i !== idx))}>Remove</button>
               </div>
             ))}
           </div>
         </div>
-        <div className="rounded border p-3">
-          <p className="mb-2 text-sm font-semibold">Category Card Images</p>
-          <div className="space-y-3">
+
+        {/* Category Images */}
+        <div className="rounded-2xl border border-green-100 bg-white p-5 shadow-sm">
+          <p className="mb-1 font-bold text-brand-ink">🗂️ Category Card Images</p>
+          <p className="mb-3 text-xs text-slate-500">Upload a custom image for each category card on the homepage.</p>
+          <div className="space-y-4">
             {STORE_CATEGORIES.map((c) => (
-              <div key={c.slug} className="rounded border p-2">
-                <p className="text-sm font-medium">{c.name}</p>
-                {categoryCardImages[c.slug] ? (
-                  <img src={categoryCardImages[c.slug]} alt={c.name} className="mt-2 h-24 w-40 rounded object-cover" />
-                ) : null}
-                <div className="mt-2 flex flex-wrap gap-2">
-                  <input
-                    className="rounded border p-2 text-sm"
-                    type="file"
-                    accept="image/*"
-                    onChange={(e) => {
-                      const file = e.target.files?.[0];
-                      if (file) uploadImage(file, "category", c.slug);
-                    }}
-                  />
-                  {categoryCardImages[c.slug] ? (
-                    <button
-                      type="button"
-                      className="rounded border px-3 py-1 text-sm"
-                      onClick={() =>
-                        setCategoryCardImages((prev) => {
-                          const next = { ...prev };
-                          delete next[c.slug];
-                          return next;
-                        })
-                      }
-                    >
-                      Remove
-                    </button>
-                  ) : null}
+              <div key={c.slug} className="rounded-xl border border-green-100 p-3">
+                <p className="font-semibold text-brand-ink">{c.name}</p>
+                {categoryCardImages[c.slug] && (
+                  <img src={categoryCardImages[c.slug]} alt={c.name} className="mt-2 h-24 w-40 rounded-lg object-cover" />
+                )}
+                <div className="mt-2 flex flex-wrap items-center gap-2">
+                  <input className="rounded-xl border border-green-200 p-2 text-sm" type="file" accept="image/*"
+                    onChange={(e) => { const f = e.target.files?.[0]; if (f) uploadImage(f, "category", c.slug); }} />
+                  {uploadingKey === `category-${c.slug}` && <span className="text-xs text-brand-green">Uploading...</span>}
+                  {categoryCardImages[c.slug] && (
+                    <button type="button" className="rounded-lg border border-red-200 px-3 py-1.5 text-xs text-red-500 hover:bg-red-50"
+                      onClick={() => setCategoryCardImages((prev) => { const n = { ...prev }; delete n[c.slug]; return n; })}>Remove</button>
+                  )}
                 </div>
               </div>
             ))}
           </div>
         </div>
-        {uploadingKey ? <p className="text-xs text-slate-500">Uploading...</p> : null}
-        <button className="rounded bg-green-600 px-3 py-2 text-white">Save Settings</button>
+
+        <button className="w-full rounded-xl bg-brand-green py-3 font-bold text-white hover:bg-brand-green2">
+          💾 Save All Settings
+        </button>
       </form>
     </div>
   );
