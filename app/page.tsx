@@ -49,10 +49,10 @@ export default async function Home() {
 
       {/* Trust badges */}
       <div className="border-b border-green-100 bg-white shadow-sm">
-        <div className="mx-auto grid max-w-7xl grid-cols-2 gap-px md:grid-cols-4">
+        <div className="mx-auto grid max-w-7xl grid-cols-2 gap-px divide-x divide-green-100 md:grid-cols-4">
           {trustBadges.map((b) => (
-            <div key={b.label} className="flex items-center gap-3 px-6 py-4">
-              <span className="text-2xl">{b.icon}</span>
+            <div key={b.label} className="flex items-center gap-3 px-5 py-4 sm:px-6">
+              <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-brand-greenlight text-xl">{b.icon}</span>
               <div>
                 <p className="text-sm font-bold text-brand-ink">{b.label}</p>
                 <p className="text-xs text-slate-500">{b.sub}</p>
@@ -64,29 +64,39 @@ export default async function Home() {
 
       {/* Categories */}
       <section className="mx-auto max-w-7xl px-4 py-14">
-        <div className="mb-8 text-center">
+        <div className="mb-10 text-center">
           <p className="text-xs font-semibold uppercase tracking-widest text-brand-green">Browse by Category</p>
-          <h2 className="mt-1 text-3xl font-extrabold text-brand-ink">Explore Our Collection</h2>
+          <h2 className="mt-1 text-4xl font-extrabold text-brand-ink">Explore Our Collection</h2>
+          <p className="mt-2 text-slate-500">Find the perfect ride for every age and adventure</p>
         </div>
-        <div className="grid grid-cols-2 gap-5 lg:grid-cols-4">
-          {categories.map((c) => (
+        {/* Top 2 large + Bottom 2 large grid */}
+        <div className="grid grid-cols-2 gap-4 sm:gap-5">
+          {categories.map((c, i) => (
             <Link
               key={c.slug}
               href={`/category/${c.slug}`}
-              className="group relative overflow-hidden rounded-2xl shadow-md transition hover:-translate-y-1 hover:shadow-xl"
+              className="group relative overflow-hidden rounded-2xl shadow-md transition duration-300 hover:-translate-y-1 hover:shadow-2xl"
+              style={{ aspectRatio: "4/3" }}
             >
               <img
-                src={mergedCategoryCards[c.slug] || "https://images.unsplash.com/photo-1507035895480-2b3156c31fc8?w=600"}
+                src={mergedCategoryCards[c.slug] || "https://images.unsplash.com/photo-1507035895480-2b3156c31fc8?w=800"}
                 alt={c.name}
-                className="h-40 w-full object-cover transition duration-500 group-hover:scale-110 sm:h-56"
+                className="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-110"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent" />
-              <div className="absolute bottom-0 left-0 right-0 p-4">
-                <p className="text-lg font-extrabold text-white drop-shadow">{c.name}</p>
-                <p className="mt-0.5 text-xs text-white/80">{categoryDescriptions[c.slug] || "Explore the latest collection"}</p>
-                <span className="mt-2 inline-flex items-center gap-1 rounded-full bg-brand-green/90 px-2.5 py-0.5 text-xs font-semibold text-white">
-                  Explore →
-                </span>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-black/5 transition duration-300 group-hover:from-black/90" />
+              <div className="absolute inset-0 flex flex-col justify-end p-4 sm:p-5">
+                <p className="text-base font-extrabold text-white drop-shadow-lg sm:text-xl">{c.name}</p>
+                <p className="mt-1 line-clamp-1 text-xs text-white/75 sm:text-sm">{categoryDescriptions[c.slug] || "Explore collection"}</p>
+                <div className="mt-3 flex items-center gap-2">
+                  <span className="rounded-full bg-brand-green px-3 py-1 text-xs font-bold text-white shadow transition group-hover:bg-white group-hover:text-brand-green">
+                    Explore →
+                  </span>
+                  {c.subcategories?.length > 0 && (
+                    <span className="rounded-full bg-white/20 px-2 py-0.5 text-xs text-white backdrop-blur">
+                      {c.subcategories.length} types
+                    </span>
+                  )}
+                </div>
               </div>
             </Link>
           ))}
@@ -126,14 +136,19 @@ export default async function Home() {
             </div>
             <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
               {reviews.map((r: any) => (
-                <div key={String(r._id)} className="rounded-2xl border border-green-100 bg-white p-5 shadow-sm">
-                  <div className="flex gap-0.5">
+                <div key={String(r._id)} className="flex flex-col rounded-2xl border border-green-100 bg-white p-5 shadow-sm">
+                  <div className="flex gap-0.5 text-amber-400">
                     {[1, 2, 3, 4, 5].map((s) => (
-                      <span key={s} className={s <= r.rating ? "star-filled" : "star-empty"}>★</span>
+                      <span key={s} className="text-lg">{s <= r.rating ? "★" : "☆"}</span>
                     ))}
                   </div>
-                  <p className="mt-3 text-sm leading-relaxed text-slate-600">&ldquo;{r.message}&rdquo;</p>
-                  <p className="mt-3 text-sm font-bold text-brand-ink">&mdash; {r.name}</p>
+                  <p className="mt-3 flex-1 text-sm leading-relaxed text-slate-600 italic">&ldquo;{r.message}&rdquo;</p>
+                  <div className="mt-4 flex items-center gap-2">
+                    <div className="flex h-8 w-8 items-center justify-center rounded-full bg-brand-green text-xs font-bold text-white">
+                      {r.name?.charAt(0).toUpperCase()}
+                    </div>
+                    <p className="text-sm font-bold text-brand-ink">{r.name}</p>
+                  </div>
                 </div>
               ))}
             </div>

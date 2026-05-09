@@ -16,7 +16,16 @@ export default function ProductDetailsClient({ product }: { product: any }) {
   }, [product, selected]);
 
   return (
-    <div className="mx-auto grid max-w-7xl gap-8 px-4 py-8 md:grid-cols-2">
+    <div className="mx-auto max-w-7xl px-4 py-6">
+      {/* Breadcrumb */}
+      <div className="mb-4 flex items-center gap-2 text-xs text-slate-500">
+        <a href="/" className="hover:text-brand-green">Home</a>
+        <span>›</span>
+        <a href="/shop" className="hover:text-brand-green">Shop</a>
+        <span>›</span>
+        <span className="font-medium text-brand-ink line-clamp-1">{product.name}</span>
+      </div>
+    <div className="grid gap-8 md:grid-cols-2">
       <div className="rounded-2xl border border-green-100 bg-white p-3 shadow-sm">
         <ImageCarousel
           images={currentImages.length ? currentImages : [selected?.image || product.variants?.[0]?.image].filter(Boolean)}
@@ -85,6 +94,7 @@ export default function ProductDetailsClient({ product }: { product: any }) {
           </table>
         </div>
       </div>
+    </div>
     </div>
   );
 }
