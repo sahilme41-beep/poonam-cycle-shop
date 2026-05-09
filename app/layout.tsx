@@ -5,6 +5,8 @@ import AnnouncementBar from "@/components/AnnouncementBar";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import WhatsappFloating from "@/components/WhatsappFloating";
+import MobileCallBar from "@/components/MobileCallBar";
+import ScrollToTop from "@/components/ScrollToTop";
 import { Toaster } from "sonner";
 
 const inter = Inter({ subsets: ["latin"], display: "swap" });
@@ -19,18 +21,23 @@ function getMetadataBase() {
 }
 
 export const metadata: Metadata = {
-  title: "Poonam Cycle & Toy World",
-  description: "Cycle and toy shop website for Kolhapur",
+  title: "Poonam Cycle & Toy World | Kolhapur",
+  description: "Kolhapur's trusted cycle & toy shop — electric cycles, kids ride-ons, tricycles, and more. Near Kaswam Hospital, Gandhinagar, Kolhapur.",
   metadataBase: getMetadataBase(),
+  icons: {
+    icon: "/logo.svg",
+    apple: "/logo.svg"
+  },
   openGraph: {
     title: "Poonam Cycle & Toy World",
-    description: "Premium cycles, kids rides, and electric toys in Kolhapur.",
-    type: "website"
+    description: "Premium cycles, kids ride-ons, electric cars and toys in Kolhapur.",
+    type: "website",
+    siteName: "Poonam Cycle & Toy World"
   },
   twitter: {
     card: "summary_large_image",
     title: "Poonam Cycle & Toy World",
-    description: "Premium cycles, kids rides, and electric toys in Kolhapur."
+    description: "Premium cycles, kids ride-ons, electric cars and toys in Kolhapur."
   }
 };
 
@@ -44,9 +51,11 @@ export default function RootLayout({
       <body className={inter.className}>
         <AnnouncementBar />
         <Navbar />
-        <main className="min-h-screen pt-28">{children}</main>
+        <main className="min-h-screen pb-16 pt-28 md:pb-0">{children}</main>
         <Footer />
         <WhatsappFloating />
+        <MobileCallBar />
+        <ScrollToTop />
         <Toaster richColors position="top-right" />
         <script
           type="application/ld+json"

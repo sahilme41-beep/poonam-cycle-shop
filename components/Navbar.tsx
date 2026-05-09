@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { ChevronDown, Instagram, Menu, MessageCircle, Search, X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
+import { usePathname, useRouter } from "next/navigation";
 import { BUSINESS, STORE_CATEGORIES } from "@/lib/constants";
 import Image from "next/image";
 
@@ -12,7 +13,13 @@ export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mobileExpanded, setMobileExpanded] = useState<string | null>(null);
   const [catOpen, setCatOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
+  const [searchQ, setSearchQ] = useState("");
   const catRef = useRef<HTMLDivElement>(null);
+  const searchRef = useRef<HTMLInputElement>(null);
+  const pathname = usePathname();
+  const router = useRouter();
 
   useEffect(() => {
     function handleClickOutside(e: MouseEvent) {
@@ -24,8 +31,36 @@ export default function Navbar() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 10);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
+    if (searchOpen) searchRef.current?.focus();
+  }, [searchOpen]);
+
+  function handleSearch(e: React.FormEvent) {
+    e.preventDefault();
+    if (searchQ.trim()) {
+      router.push(`/shop?q=${encodeURIComponent(searchQ.trim())}`);
+      setSearchOpen(false);
+      setSearchQ("");
+    }
+  }
+
+  function navLink(href: string) {
+    const active = pathname === href;
+    return `rounded-lg px-3 py-2 font-medium transition ${
+      active
+        ? "bg-brand-greenlight text-brand-green"
+        : "text-slate-700 hover:bg-brand-greenlight hover:text-brand-green"
+    }`;
+  }
+
   return (
-    <header className="fixed top-8 z-40 w-full border-b border-green-100 bg-white/97 shadow-sm backdrop-blur">
+    <header className={`fixed top-8 z-40 w-full border-b border-green-100 bg-white/97 backdrop-blur transition-shadow duration-300 ${scrolled ? "shadow-md" : "shadow-sm"}`}>
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-2.5">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2 shrink-0">
@@ -34,7 +69,7 @@ export default function Navbar() {
 
         {/* Desktop Nav */}
         <nav className="hidden items-center gap-1 text-sm md:flex">
-          <Link href="/" className="rounded-lg px-3 py-2 font-medium text-slate-700 hover:bg-brand-greenlight hover:text-brand-green">
+          <Link href="/" className={navLink("/")}>
             Home
           </Link>
 
@@ -77,15 +112,9 @@ export default function Navbar() {
             )}
           </div>
 
-          <Link href="/shop" className="rounded-lg px-3 py-2 font-medium text-slate-700 hover:bg-brand-greenlight hover:text-brand-green">
-            Shop
-          </Link>
-          <Link href="/about" className="rounded-lg px-3 py-2 font-medium text-slate-700 hover:bg-brand-greenlight hover:text-brand-green">
-            About
-          </Link>
-          <Link href="/contact" className="rounded-lg px-3 py-2 font-medium text-slate-700 hover:bg-brand-greenlight hover:text-brand-green">
-            Contact
-          </Link>
+          <Link href="/shop" className={navLink("/shop")}>Shop</Link>
+          <Link href="/about" className={navLink("/about")}>About</Link>
+          <Link href="/contact" className={navLink("/contact")}>Contact</Link>
         </nav>
 
         {/* Action icons */}
@@ -97,9 +126,23 @@ export default function Navbar() {
           >
             {mobileOpen ? <X size={18} /> : <Menu size={18} />}
           </button>
-          <Link href="/shop" className="hidden rounded-lg border border-slate-200 p-2 hover:border-brand-green hover:text-brand-green md:inline-flex" aria-label="Search products">
-            <Search size={16} />
-          </Link>
+          {searchOpen ? (
+            <form onSubmit={handleSearch} className="hidden md:flex items-center gap-1">
+              <input
+                ref={searchRef}
+                value={searchQ}
+                onChange={(e) => setSearchQ(e.target.value)}
+                placeholder="Search products…"
+                className="w-44 rounded-lg border border-green-200 px-3 py-1.5 text-sm focus:border-brand-green focus:outline-none focus:ring-1 focus:ring-brand-green"
+              />
+              <button type="submit" className="rounded-lg bg-brand-green p-2 text-white hover:bg-brand-green2"><Search size={14} /></button>
+              <button type="button" onClick={() => setSearchOpen(false)} className="rounded-lg border border-slate-200 p-2 hover:bg-slate-50"><X size={14} /></button>
+            </form>
+          ) : (
+            <button onClick={() => setSearchOpen(true)} className="hidden rounded-lg border border-slate-200 p-2 hover:border-brand-green hover:text-brand-green md:inline-flex" aria-label="Search">
+              <Search size={16} />
+            </button>
+          )}
           <a
             href={`https://wa.me/91${BUSINESS.whatsapp}`}
             target="_blank"

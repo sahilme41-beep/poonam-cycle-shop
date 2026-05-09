@@ -1,7 +1,8 @@
 import ProductCard from "@/components/ProductCard";
-import { getFeaturedProducts, getStoreCategories, getStoreMediaSettings } from "@/lib/storefront";
+import { getFeaturedProducts, getReviews, getStoreCategories, getStoreMediaSettings } from "@/lib/storefront";
 import Link from "next/link";
 import HomeHeroSlider from "@/components/HomeHeroSlider";
+import { BUSINESS } from "@/lib/constants";
 
 const categoryCards: Record<string, string> = {
   "electric-cars-toys":
@@ -18,56 +19,145 @@ const categoryDescriptions: Record<string, string> = {
   "electric-cycles": "Daily comfort cycles with electric support"
 };
 
+const trustBadges = [
+  { icon: "🏆", label: "Trusted Store", sub: "Serving Kolhapur for years" },
+  { icon: "🚚", label: "Home Delivery", sub: "Available on select orders" },
+  { icon: "📞", label: "Expert Advice", sub: "Call us before you buy" },
+  { icon: "✅", label: "Quality Products", sub: "Top brands guaranteed" },
+];
+
 export const dynamic = "force-dynamic";
 
 export default async function Home() {
-  const [categories, featuredProducts, mediaSettings] = await Promise.all([
+  const [categories, featuredProducts, mediaSettings, reviews] = await Promise.all([
     getStoreCategories(),
     getFeaturedProducts(8),
-    getStoreMediaSettings()
+    getStoreMediaSettings(),
+    getReviews(6)
   ]);
   const mergedCategoryCards = { ...categoryCards, ...(mediaSettings.categoryCardImages || {}) };
 
   return (
     <div className="pb-10">
+      {/* Hero */}
       <HomeHeroSlider images={mediaSettings.homeBannerImages} />
-      <section className="mx-auto max-w-7xl px-4 py-12">
-        <h2 className="mb-5 text-center text-2xl font-bold text-brand-ink">Explore Our Collection</h2>
-        <div className="grid grid-cols-2 gap-4 md:grid-cols-3">
+
+      {/* Trust badges */}
+      <div className="border-b border-green-100 bg-white shadow-sm">
+        <div className="mx-auto grid max-w-7xl grid-cols-2 gap-px md:grid-cols-4">
+          {trustBadges.map((b) => (
+            <div key={b.label} className="flex items-center gap-3 px-6 py-4">
+              <span className="text-2xl">{b.icon}</span>
+              <div>
+                <p className="text-sm font-bold text-brand-ink">{b.label}</p>
+                <p className="text-xs text-slate-500">{b.sub}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Categories */}
+      <section className="mx-auto max-w-7xl px-4 py-14">
+        <div className="mb-8 text-center">
+          <p className="text-xs font-semibold uppercase tracking-widest text-brand-green">Browse by Category</p>
+          <h2 className="mt-1 text-3xl font-extrabold text-brand-ink">Explore Our Collection</h2>
+        </div>
+        <div className="grid grid-cols-2 gap-5 md:grid-cols-3">
           {categories.map((c: any) => (
             <Link
               key={c.slug}
               href={`/category/${c.slug}`}
-              className="group overflow-hidden rounded-2xl border border-green-100 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
+              className="group relative overflow-hidden rounded-2xl shadow-md transition hover:-translate-y-1 hover:shadow-xl"
             >
-              <div className="relative overflow-hidden">
-                <img
-                  src={mergedCategoryCards[c.slug] || "https://images.unsplash.com/photo-1507035895480-2b3156c31fc8?w=600"}
-                  alt={c.name}
-                  className="h-32 w-full object-cover transition duration-300 group-hover:scale-105 sm:h-44"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
-              </div>
-              <div className="p-4">
-                <p className="font-bold text-brand-ink group-hover:text-brand-green">{c.name}</p>
-                <p className="mt-1 text-xs text-slate-500">{categoryDescriptions[c.slug] || "Explore the latest collection"}</p>
-                <p className="mt-2 inline-flex items-center gap-1 text-xs font-semibold text-brand-green">
-                  Explore Collection <span aria-hidden>→</span>
-                </p>
+              <img
+                src={mergedCategoryCards[c.slug] || "https://images.unsplash.com/photo-1507035895480-2b3156c31fc8?w=600"}
+                alt={c.name}
+                className="h-40 w-full object-cover transition duration-500 group-hover:scale-110 sm:h-56"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent" />
+              <div className="absolute bottom-0 left-0 right-0 p-4">
+                <p className="text-lg font-extrabold text-white drop-shadow">{c.name}</p>
+                <p className="mt-0.5 text-xs text-white/80">{categoryDescriptions[c.slug] || "Explore the latest collection"}</p>
+                <span className="mt-2 inline-flex items-center gap-1 rounded-full bg-brand-green/90 px-2.5 py-0.5 text-xs font-semibold text-white">
+                  Explore →
+                </span>
               </div>
             </Link>
           ))}
         </div>
       </section>
-      <section className="mx-auto max-w-7xl px-4 pb-12">
-        <div className="mb-4 flex items-center justify-between">
-          <h2 className="text-2xl font-bold text-brand-ink">Featured Products</h2>
-          <Link href="/shop" className="text-sm font-semibold text-brand-green hover:text-brand-green2">View all →</Link>
+
+      {/* Featured Products */}
+      <section className="bg-white py-14">
+        <div className="mx-auto max-w-7xl px-4">
+          <div className="mb-8 flex items-end justify-between">
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-widest text-brand-green">Handpicked For You</p>
+              <h2 className="mt-1 text-3xl font-extrabold text-brand-ink">Featured Products</h2>
+            </div>
+            <Link href="/shop" className="rounded-lg border border-brand-green px-4 py-2 text-sm font-semibold text-brand-green hover:bg-brand-greenlight">
+              View All →
+            </Link>
+          </div>
+          <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
+            {featuredProducts.map((p: any) => (
+              <ProductCard key={String(p._id)} product={{ ...p, _id: String(p._id) }} />
+            ))}
+          </div>
+          {!featuredProducts.length && (
+            <p className="py-12 text-center text-slate-400">No featured products yet. Check back soon!</p>
+          )}
         </div>
-        <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
-          {featuredProducts.map((p: any) => (
-            <ProductCard key={String(p._id)} product={{ ...p, _id: String(p._id) }} />
-          ))}
+      </section>
+
+      {/* Reviews */}
+      {reviews.length > 0 && (
+        <section className="py-14">
+          <div className="mx-auto max-w-7xl px-4">
+            <div className="mb-8 text-center">
+              <p className="text-xs font-semibold uppercase tracking-widest text-brand-green">What Customers Say</p>
+              <h2 className="mt-1 text-3xl font-extrabold text-brand-ink">Customer Reviews</h2>
+            </div>
+            <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+              {reviews.map((r: any) => (
+                <div key={String(r._id)} className="rounded-2xl border border-green-100 bg-white p-5 shadow-sm">
+                  <div className="flex gap-0.5">
+                    {[1, 2, 3, 4, 5].map((s) => (
+                      <span key={s} className={s <= r.rating ? "star-filled" : "star-empty"}>★</span>
+                    ))}
+                  </div>
+                  <p className="mt-3 text-sm leading-relaxed text-slate-600">"{r.message}"</p>
+                  <p className="mt-3 text-sm font-bold text-brand-ink">— {r.name}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Instagram / CTA strip */}
+      <section className="bg-brand-ink py-14 text-center">
+        <p className="text-xs font-semibold uppercase tracking-widest text-brand-green">Follow Us</p>
+        <h2 className="mt-2 text-3xl font-extrabold text-white">@poonam_cycle</h2>
+        <p className="mt-2 text-slate-400">Follow us on Instagram for new arrivals and offers</p>
+        <div className="mt-6 flex flex-wrap justify-center gap-4">
+          <a
+            href="https://instagram.com/poonam_cycle"
+            target="_blank"
+            rel="noreferrer"
+            className="rounded-xl bg-gradient-to-r from-purple-500 to-pink-500 px-6 py-3 font-bold text-white hover:opacity-90"
+          >
+            Follow on Instagram
+          </a>
+          <a
+            href={`https://wa.me/91${BUSINESS.whatsapp}`}
+            target="_blank"
+            rel="noreferrer"
+            className="rounded-xl bg-[#25D366] px-6 py-3 font-bold text-white hover:bg-[#1ebe5d]"
+          >
+            WhatsApp Us
+          </a>
         </div>
       </section>
     </div>

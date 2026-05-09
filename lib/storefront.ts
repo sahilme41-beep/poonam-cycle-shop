@@ -1,6 +1,7 @@
 import { connectDB } from "@/lib/db";
 import { Category } from "@/models/Category";
 import { Product } from "@/models/Product";
+import { Review } from "@/models/Review";
 import { Setting } from "@/models/Setting";
 import { normalizeCategoryName, STORE_CATEGORIES } from "@/lib/constants";
 
@@ -66,6 +67,15 @@ export async function getStoreCategories() {
     return categories;
   } catch {
     return STORE_CATEGORIES;
+  }
+}
+
+export async function getReviews(limit = 6) {
+  try {
+    await connectDB();
+    return await Review.find().sort({ createdAt: -1 }).limit(limit).lean();
+  } catch {
+    return [];
   }
 }
 
