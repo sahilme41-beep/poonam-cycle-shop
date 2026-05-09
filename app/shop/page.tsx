@@ -1,7 +1,6 @@
 import ProductCard from "@/components/ProductCard";
 import { getStoreProducts } from "@/lib/storefront";
 import { STORE_CATEGORIES } from "@/lib/constants";
-import { Suspense } from "react";
 import ShopSearchBar from "./SearchBar";
 
 export const dynamic = "force-dynamic";
@@ -55,9 +54,7 @@ export default async function ShopPage({
           <h1 className="text-3xl font-extrabold text-brand-ink">Shop All Products</h1>
           <p className="mt-1 text-sm text-slate-500">{products.length} product{products.length !== 1 ? "s" : ""} found</p>
         </div>
-        <Suspense fallback={null}>
-          <ShopSearchBar defaultValue={searchParams.q || ""} />
-        </Suspense>
+        <ShopSearchBar defaultValue={searchParams.q || ""} />
       </div>
 
       {/* Category tabs */}

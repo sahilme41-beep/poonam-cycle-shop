@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import Link from "next/link";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
@@ -51,15 +51,20 @@ export default function HomeHeroSlider({ images }: { images?: string[] }) {
       ? images.map((img, idx) => ({ ...slides[idx % slides.length], image: img }))
       : slides;
 
-  function goTo(i: number) {
-    setIndex((i + activeSlides.length) % activeSlides.length);
+  const len = activeSlides.length;
+
+  const goTo = useCallback((i: number) => {
+    setIndex((i + len) % len);
     setAnimKey((k) => k + 1);
-  }
+  }, [len]);
 
   useEffect(() => {
-    const timer = setInterval(() => goTo(index + 1), 4000);
+    const timer = setInterval(() => {
+      setIndex((prev) => (prev + 1) % len);
+      setAnimKey((k) => k + 1);
+    }, 4000);
     return () => clearInterval(timer);
-  }, [index, activeSlides.length]);
+  }, [len]);
 
   const active = activeSlides[index];
 
