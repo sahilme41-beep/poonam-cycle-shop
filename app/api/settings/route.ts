@@ -15,5 +15,6 @@ export async function POST(req: Request) {
   revalidatePath("/");
   revalidatePath("/shop");
   revalidatePath("/about");
+  revalidatePath("/category/[slug]", "page");
   return NextResponse.json(saved);
 }

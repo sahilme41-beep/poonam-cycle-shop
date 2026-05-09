@@ -20,6 +20,8 @@ export async function GET() {
 function revalidateAll() {
   revalidatePath("/");
   revalidatePath("/shop");
+  revalidatePath("/product/[id]", "page");
+  revalidatePath("/category/[slug]", "page");
 }
 
 export async function POST(req: Request) {
@@ -33,7 +35,9 @@ export async function POST(req: Request) {
 export async function PUT(req: Request) {
   await connectDB();
   const body = normalizePayload(await req.json());
-  const updated = await Product.findByIdAndUpdate(body.id, body, { new: true });
+  const { id, _id, ...update } = body;
+  const docId = id || _id;
+  const updated = await Product.findByIdAndUpdate(docId, { $set: update }, { new: true });
   revalidateAll();
   return NextResponse.json(updated);
 }

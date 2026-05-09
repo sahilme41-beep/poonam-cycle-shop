@@ -83,8 +83,8 @@ export default function AdminProductsPage() {
         variants: [{ ...form.variants[0], image: data.url, images: [...existingImages, data.url] }]
       });
       toast.success("Image uploaded");
-    } catch {
-      toast.error("Image upload failed");
+    } catch (err: any) {
+      toast.error(err?.message || "Image upload failed");
     } finally {
       setUploading(false);
     }
