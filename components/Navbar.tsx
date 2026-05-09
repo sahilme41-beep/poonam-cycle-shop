@@ -64,7 +64,7 @@ export default function Navbar() {
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-2.5">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2 shrink-0">
-          <Image src="/logo.svg" alt="Poonam Cycle & Toy World" width={210} height={70} priority className="h-12 w-auto" />
+          <Image src="/logo.png" alt="Poonam Cycle & Toy World" width={210} height={70} priority className="h-12 w-auto" />
         </Link>
 
         {/* Desktop Nav */}
