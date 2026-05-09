@@ -1,7 +1,9 @@
+import { unstable_noStore as noStore } from "next/cache";
 import { connectDB } from "@/lib/db";
 import { Setting } from "@/models/Setting";
 
 export default async function AnnouncementBar() {
+  noStore();
   let text = "New arrivals from our latest collections. Call 7588267528";
   try {
     await connectDB();

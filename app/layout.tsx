@@ -8,6 +8,7 @@ import WhatsappFloating from "@/components/WhatsappFloating";
 import MobileCallBar from "@/components/MobileCallBar";
 import ScrollToTop from "@/components/ScrollToTop";
 import { Toaster } from "sonner";
+import SessionProviderWrapper from "@/components/SessionProviderWrapper";
 
 const inter = Inter({ subsets: ["latin"], display: "swap" });
 
@@ -49,6 +50,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
+        <SessionProviderWrapper>
         <AnnouncementBar />
         <Navbar />
         <main className="min-h-screen pb-16 pt-28 md:pb-0">{children}</main>
@@ -57,6 +59,7 @@ export default function RootLayout({
         <MobileCallBar />
         <ScrollToTop />
         <Toaster richColors position="top-right" />
+        </SessionProviderWrapper>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

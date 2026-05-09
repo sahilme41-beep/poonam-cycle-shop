@@ -35,14 +35,14 @@ export default async function CategoryPage({
       </div>
       {categoryConfig?.subcategories?.length ? (
         <div className="mb-5 flex flex-wrap gap-2">
-          <a href={`/category/${params.slug}`} className="rounded-full border border-[#e0cdbb] bg-brand-cream px-3 py-1 text-sm hover:border-brand-brown">
+          <a href={`/category/${params.slug}`} className={`rounded-full border px-3 py-1.5 text-sm font-medium transition ${!selectedSub ? "border-brand-green bg-brand-green text-white" : "border-green-200 bg-white text-slate-600 hover:border-brand-green hover:text-brand-green"}`}>
             All
           </a>
           {categoryConfig.subcategories.map((sub) => (
             <a
               key={sub}
               href={`/category/${params.slug}?sub=${encodeURIComponent(sub)}`}
-              className="rounded-full border border-[#e0cdbb] bg-brand-cream px-3 py-1 text-sm hover:border-brand-brown"
+              className={`rounded-full border px-3 py-1.5 text-sm font-medium transition ${selectedSub === sub.toLowerCase() ? "border-brand-green bg-brand-green text-white" : "border-green-200 bg-white text-slate-600 hover:border-brand-green hover:text-brand-green"}`}
             >
               {sub}
             </a>

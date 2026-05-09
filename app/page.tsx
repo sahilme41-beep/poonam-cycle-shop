@@ -66,7 +66,7 @@ export default async function Home() {
           <p className="text-xs font-semibold uppercase tracking-widest text-brand-green">Browse by Category</p>
           <h2 className="mt-1 text-3xl font-extrabold text-brand-ink">Explore Our Collection</h2>
         </div>
-        <div className="grid grid-cols-2 gap-5 md:grid-cols-3">
+        <div className="grid grid-cols-2 gap-5 lg:grid-cols-4">
           {categories.map((c: any) => (
             <Link
               key={c.slug}

@@ -25,7 +25,8 @@ export default function Footer() {
           <div className="space-y-2">
             <Link href="/shop" className="block text-slate-400 hover:text-green-400">Shop</Link>
             <Link href="/category/electric-cycles" className="block text-slate-400 hover:text-green-400">Electric Cycles</Link>
-            <Link href="/category/electric-cars-toys" className="block text-slate-400 hover:text-green-400">Electric Cars & Toys</Link>
+            <Link href="/category/electric-cars-toys" className="block text-slate-400 hover:text-green-400">Electric Cars &amp; Toys</Link>
+            <Link href="/category/kids-mtb-cycles" className="block text-slate-400 hover:text-green-400">Kids &amp; MTB Cycles</Link>
             <Link href="/category/tricycles" className="block text-slate-400 hover:text-green-400">Tricycles</Link>
             <Link href="/about" className="block text-slate-400 hover:text-green-400">About</Link>
             <Link href="/contact" className="block text-slate-400 hover:text-green-400">Contact</Link>
@@ -33,7 +34,7 @@ export default function Footer() {
         </div>
       </div>
       <div className="border-t border-slate-800 py-4 text-center text-xs text-slate-500">
-        © {new Date().getFullYear()} Poonam Cycle & Toy World. All rights reserved.
+        © {new Date().getFullYear()} Poonam Cycle &amp; Toy World. All rights reserved.
         <span className="mx-2">·</span>
         <Link href="/admin" className="hover:text-slate-300">Admin</Link>
       </div>
