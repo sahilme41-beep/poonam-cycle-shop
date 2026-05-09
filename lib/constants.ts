@@ -31,6 +31,13 @@ export function resolveStoreCategory(rawCategory: string, rawName = "", rawDescr
   const text = `${rawName} ${rawDescription}`.toLowerCase();
 
   if (cat.includes("tricycle")) return STORE_CATEGORIES.find((c) => c.slug === "tricycles")!;
+  if (cat.includes("electric cars") || cat.includes("toy")) {
+    return STORE_CATEGORIES.find((c) => c.slug === "electric-cars-toys")!;
+  }
+  if (cat.includes("electric cycle")) return STORE_CATEGORIES.find((c) => c.slug === "electric-cycles")!;
+  if (cat.includes("mtb") || cat.includes("gear") || cat.includes("kids cycle")) {
+    return STORE_CATEGORIES.find((c) => c.slug === "tricycles")!;
+  }
   const toyKeywords = [
     "ride-on",
     "ride on",
@@ -39,18 +46,10 @@ export function resolveStoreCategory(rawCategory: string, rawName = "", rawDescr
     "car",
     "scooter",
     "battery operated",
-    "remote",
-    "kids",
-    "baby",
-    "stroller",
-    "walker",
-    "cradle"
+    "remote"
   ];
   if (toyKeywords.some((k) => text.includes(k))) {
     return STORE_CATEGORIES.find((c) => c.slug === "electric-cars-toys")!;
-  }
-  if (cat.includes("electric cycle") || cat.includes("mtb") || cat.includes("gear cycle")) {
-    return STORE_CATEGORIES.find((c) => c.slug === "electric-cycles")!;
   }
   if (
     text.includes("emotorad") ||
@@ -63,7 +62,7 @@ export function resolveStoreCategory(rawCategory: string, rawName = "", rawDescr
   ) {
     return STORE_CATEGORIES.find((c) => c.slug === "electric-cycles")!;
   }
-  return STORE_CATEGORIES.find((c) => c.slug === "electric-cars-toys")!;
+  return STORE_CATEGORIES.find((c) => c.slug === "tricycles")!;
 }
 
 export function normalizeCategoryName(rawCategory: string, rawName = "", rawDescription = "") {

@@ -1,5 +1,5 @@
 import ProductCard from "@/components/ProductCard";
-import { getFeaturedProducts, getStoreCategories } from "@/lib/storefront";
+import { getFeaturedProducts, getStoreCategories, getStoreMediaSettings } from "@/lib/storefront";
 import Link from "next/link";
 import HomeHeroSlider from "@/components/HomeHeroSlider";
 
@@ -21,14 +21,16 @@ const categoryDescriptions: Record<string, string> = {
 export const dynamic = "force-dynamic";
 
 export default async function Home() {
-  const [categories, featuredProducts] = await Promise.all([
+  const [categories, featuredProducts, mediaSettings] = await Promise.all([
     getStoreCategories(),
-    getFeaturedProducts(8)
+    getFeaturedProducts(8),
+    getStoreMediaSettings()
   ]);
+  const mergedCategoryCards = { ...categoryCards, ...(mediaSettings.categoryCardImages || {}) };
 
   return (
     <div className="pb-10">
-      <HomeHeroSlider />
+      <HomeHeroSlider images={mediaSettings.homeBannerImages} />
       <section className="mx-auto max-w-7xl px-4 py-12">
         <h2 className="mb-5 text-center text-2xl font-bold text-brand-ink">Explore Our Collection</h2>
         <div className="grid grid-cols-2 gap-3 md:grid-cols-3">
@@ -39,7 +41,7 @@ export default async function Home() {
               className="group overflow-hidden rounded-xl border border-[#e9d8c7] bg-brand-cream shadow-sm hover:shadow-md"
             >
               <img
-                src={categoryCards[c.slug] || "https://images.unsplash.com/photo-1507035895480-2b3156c31fc8?w=600"}
+                src={mergedCategoryCards[c.slug] || "https://images.unsplash.com/photo-1507035895480-2b3156c31fc8?w=600"}
                 alt={c.name}
                 className="h-28 w-full object-cover sm:h-40"
               />

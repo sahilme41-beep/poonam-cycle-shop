@@ -5,6 +5,7 @@ import { Product } from "@/models/Product";
 import { Review } from "@/models/Review";
 import { Setting } from "@/models/Setting";
 import notionProducts from "@/notion-products.json";
+import electricCyclesProducts from "@/electric-cycles-products.json";
 import { STORE_CATEGORIES, formatCategorySlug, resolveStoreCategory } from "@/lib/constants";
 import fs from "fs";
 import path from "path";
@@ -42,14 +43,15 @@ export async function POST() {
     }
     await Category.deleteMany({ slug: { $nin: categories.map((c) => c.slug) } });
 
-    const starterProducts = notionProducts.map((item: any, idx) => {
+    const mergedProducts = [...(notionProducts as any[]), ...(electricCyclesProducts as any[])];
+    const starterProducts = mergedProducts.map((item: any, idx) => {
       const knownCategory = resolveStoreCategory(
         String(item.category || ""),
         String(item.name || ""),
         String(item.description || "")
       );
       const images = getAllLocalImages(item);
-      const notionKey = `${formatCategorySlug(String(item.category || knownCategory.name))}-${item.index ?? idx}`;
+      const notionKey = `${formatCategorySlug(String(item.category || knownCategory.name))}-${item.index ?? idx}-${formatCategorySlug(String(item.name || ""))}`;
       return {
         notionKey,
         name: item.name,

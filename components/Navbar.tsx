@@ -18,6 +18,7 @@ export default function Navbar() {
           Poonam Cycle & Toy World
         </Link>
         <nav className="hidden items-center gap-5 text-sm md:flex">
+          <Link href="/" className="font-medium text-slate-700 hover:text-brand-brown">Home</Link>
           <div className="group relative">
             <button className="inline-flex items-center gap-1 font-medium">
               Categories <ChevronDown size={14} />
@@ -72,6 +73,9 @@ export default function Navbar() {
 
       {mobileOpen ? (
         <div className="border-t bg-white px-4 py-3 md:hidden">
+          <Link href="/" className="block py-2 text-sm font-medium" onClick={() => setMobileOpen(false)}>
+            Home
+          </Link>
           <Link href="/shop" className="block py-2 text-sm font-medium" onClick={() => setMobileOpen(false)}>
             Shop
           </Link>

@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { useEffect, useState } from "react";
 
 const slides = [
@@ -36,35 +35,30 @@ const slides = [
   }
 ];
 
-export default function HomeHeroSlider() {
+export default function HomeHeroSlider({ images }: { images?: string[] }) {
   const [index, setIndex] = useState(0);
+  const activeSlides =
+    images && images.length
+      ? images.map((img, idx) => ({
+          ...slides[idx % slides.length],
+          image: img
+        }))
+      : slides;
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setIndex((prev) => (prev + 1) % slides.length);
+      setIndex((prev) => (prev + 1) % activeSlides.length);
     }, 3500);
     return () => clearInterval(timer);
-  }, []);
+  }, [activeSlides.length]);
 
-  const active = slides[index];
+  const active = activeSlides[index];
 
   return (
     <section className="relative mt-2 overflow-hidden bg-[#2a1d13]">
       <img src={active.image} alt={active.title} className="h-[52vh] w-full object-contain sm:h-[64vh]" />
-      <div className="absolute inset-0 bg-black/40" />
-      <div className="absolute inset-0 flex items-center px-4">
-        <div className="mx-auto w-full max-w-7xl">
-          <div className="max-w-xl rounded-2xl bg-brand-cream/92 p-5 shadow-xl backdrop-blur sm:p-8">
-            <p className="text-xs font-semibold tracking-wide text-brand-brown sm:text-sm">{active.subtitle}</p>
-            <h1 className="mt-2 text-2xl font-extrabold text-brand-ink sm:text-4xl">{active.title}</h1>
-            <Link href={active.cta} className="mt-4 inline-block rounded-lg bg-brand-brown px-5 py-2.5 text-sm font-semibold text-white hover:bg-brand-brown2">
-              Explore Collection
-            </Link>
-          </div>
-        </div>
-      </div>
       <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-2">
-        {slides.map((_, idx) => (
+        {activeSlides.map((_, idx) => (
           <button
             key={idx}
             onClick={() => setIndex(idx)}

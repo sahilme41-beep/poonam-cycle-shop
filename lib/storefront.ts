@@ -1,6 +1,7 @@
 import { connectDB } from "@/lib/db";
 import { Category } from "@/models/Category";
 import { Product } from "@/models/Product";
+import { Setting } from "@/models/Setting";
 import { normalizeCategoryName, STORE_CATEGORIES } from "@/lib/constants";
 
 function normalizeProductCategoryFields(products: any[]) {
@@ -65,5 +66,28 @@ export async function getStoreCategories() {
     return categories;
   } catch {
     return STORE_CATEGORIES;
+  }
+}
+
+export async function getStoreMediaSettings() {
+  const fallback = {
+    homeBannerImages: [],
+    categoryCardImages: {} as Record<string, string>
+  };
+  try {
+    await connectDB();
+    const [homeBanner, categoryCard] = await Promise.all([
+      Setting.findOne({ key: "homeBannerImages" }).lean(),
+      Setting.findOne({ key: "categoryCardImages" }).lean()
+    ]);
+    return {
+      homeBannerImages: Array.isArray((homeBanner as any)?.value) ? (homeBanner as any).value : fallback.homeBannerImages,
+      categoryCardImages:
+        (categoryCard as any)?.value && typeof (categoryCard as any).value === "object"
+          ? ((categoryCard as any).value as Record<string, string>)
+          : fallback.categoryCardImages
+    };
+  } catch {
+    return fallback;
   }
 }

@@ -1,0 +1,123 @@
+[
+  {
+    "index": 1,
+    "category": "Electric Cycles",
+    "name": "Dope",
+    "description": "EMotorad Dope Kids E-Bike with 250W hub motor, removable battery and up to 22 km range.",
+    "features": [
+      "Kid-friendly design with stable frame and tyres.",
+      "5.2Ah removable battery with 2-3 hour charging.",
+      "250W rear hub motor with safe 15 km/h top speed."
+    ],
+    "mrp": 26000,
+    "price": 19999,
+    "localImages": ["/home-banners/banner-4-emotorad.png"]
+  },
+  {
+    "index": 2,
+    "category": "Electric Cycles",
+    "name": "X1",
+    "description": "EMotorad X1 electric cycle for men and women with 36V battery and front suspension.",
+    "features": [
+      "Up to 35 km range on pedal assist.",
+      "36V 7.65Ah removable battery.",
+      "27.5 inch tyres and front suspension."
+    ],
+    "mrp": 29999,
+    "price": 25000,
+    "localImages": ["/home-banners/banner-4-emotorad.png"]
+  },
+  {
+    "index": 3,
+    "category": "Electric Cycles",
+    "name": "X2",
+    "description": "EMotorad X2 mountain electric cycle with removable battery and multiple riding modes.",
+    "features": [
+      "250W motor with top speed of 25 km/h.",
+      "36V 7.65Ah removable battery.",
+      "Pedal assist, throttle, cruise and walk mode."
+    ],
+    "mrp": 35000,
+    "price": 29000,
+    "localImages": ["/home-banners/banner-4-emotorad.png"]
+  },
+  {
+    "index": 4,
+    "category": "Electric Cycles",
+    "name": "Legend 07",
+    "description": "Legend 07 electric cycle model with robust frame and suspension setup.",
+    "features": [
+      "Strong frame and reliable components.",
+      "Front suspension with smooth control.",
+      "Built for daily electric commuting."
+    ],
+    "mrp": 38000,
+    "price": 29999,
+    "localImages": ["/home-banners/banner-4-emotorad.png"]
+  },
+  {
+    "index": 5,
+    "category": "Electric Cycles",
+    "name": "T-REX AIR",
+    "description": "EMotorad T-REX AIR electric bicycle with 250W BLDC motor and 5 riding modes.",
+    "features": [
+      "High speed brushless 250W motor.",
+      "LCD display with multiple ride modes.",
+      "Suitable for daily commute and mixed roads."
+    ],
+    "mrp": 52000,
+    "price": 35000,
+    "localImages": ["/home-banners/banner-4-emotorad.png"]
+  },
+  {
+    "index": 6,
+    "category": "Electric Cycles",
+    "name": "T-Rex+ V3",
+    "description": "T-Rex+ V3 premium electric cycle model.",
+    "features": [
+      "Premium performance electric model.",
+      "Suitable for long city rides."
+    ],
+    "mrp": 60000,
+    "price": 43000,
+    "localImages": ["/home-banners/banner-4-emotorad.png"]
+  },
+  {
+    "index": 7,
+    "category": "Electric Cycles",
+    "name": "Emotorad Viper",
+    "description": "Emotorad Viper model electric cycle.",
+    "features": [
+      "High-performance premium electric cycle.",
+      "Designed for powerful assisted riding."
+    ],
+    "mrp": 89000,
+    "price": 65000,
+    "localImages": ["/home-banners/banner-4-emotorad.png"]
+  },
+  {
+    "index": 8,
+    "category": "Electric Cars & Toys",
+    "name": "Play Tool Giraffe Slide",
+    "description": "Big size toy giraffe slide model.",
+    "features": [
+      "Large-size kids toy slide."
+    ],
+    "mrp": 6000,
+    "price": 3499,
+    "localImages": ["/home-banners/banner-1-bike-trike.png"]
+  },
+  {
+    "index": 9,
+    "category": "Electric Cars & Toys",
+    "name": "Play Tool Magic Car Twist",
+    "description": "Twist car model available in latest colors.",
+    "features": [
+      "Kids twist car with color options."
+    ],
+    "mrp": 2499,
+    "price": 1299,
+    "localImages": ["/home-banners/banner-1-bike-trike.png"]
+  }
+]
+
