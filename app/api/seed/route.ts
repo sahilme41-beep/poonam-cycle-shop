@@ -5,7 +5,7 @@ import { Product } from "@/models/Product";
 import { Review } from "@/models/Review";
 import { Setting } from "@/models/Setting";
 import notionProducts from "@/notion-products.json";
-import { STORE_CATEGORIES, formatCategorySlug } from "@/lib/constants";
+import { STORE_CATEGORIES, formatCategorySlug, resolveStoreCategory } from "@/lib/constants";
 import fs from "fs";
 import path from "path";
 
@@ -40,14 +40,14 @@ export async function POST() {
     for (const c of categories) {
       await Category.findOneAndUpdate({ slug: c.slug }, c, { upsert: true, new: true });
     }
+    await Category.deleteMany({ slug: { $nin: categories.map((c) => c.slug) } });
 
     const starterProducts = notionProducts.map((item: any, idx) => {
-      const knownCategory =
-        STORE_CATEGORIES.find(
-          (c) =>
-            c.name.toLowerCase() === String(item.category || "").toLowerCase() ||
-            c.slug === formatCategorySlug(String(item.category || ""))
-        ) || STORE_CATEGORIES[0];
+      const knownCategory = resolveStoreCategory(
+        String(item.category || ""),
+        String(item.name || ""),
+        String(item.description || "")
+      );
       const images = getAllLocalImages(item);
       const notionKey = `${formatCategorySlug(String(item.category || knownCategory.name))}-${item.index ?? idx}`;
       return {

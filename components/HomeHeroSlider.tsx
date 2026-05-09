@@ -19,9 +19,9 @@ const slides = [
       "https://images.unsplash.com/photo-1519583272095-6433daf26b6e?q=80&w=1800&auto=format&fit=crop"
   },
   {
-    title: "MTB, Gear and Kids Cycles",
-    subtitle: "Reliable builds for daily rides and adventure",
-    cta: "/category/gear-cycles",
+    title: "Electric Cycles Collection",
+    subtitle: "Reliable builds for everyday smooth rides",
+    cta: "/category/electric-cycles",
     image:
       "https://images.unsplash.com/photo-1571333250630-f0230c320b6d?q=80&w=1800&auto=format&fit=crop"
   },

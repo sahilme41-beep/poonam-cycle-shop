@@ -9,16 +9,13 @@ export const BUSINESS = {
 };
 
 export const STORE_CATEGORIES = [
-  { name: "MTB Cycles", slug: "mtb-cycles", subcategories: [] },
-  { name: "Gear Cycles", slug: "gear-cycles", subcategories: [] },
-  { name: "Kids Cycles", slug: "kids-cycles", subcategories: [] },
-  { name: "Electric Ride-On", slug: "electric-ride-on", subcategories: [] },
-  { name: "Tricycles", slug: "tricycles", subcategories: [] },
+  { name: "Electric Cycles", slug: "electric-cycles", subcategories: [] },
   {
     name: "Electric Cars & Toys",
     slug: "electric-cars-toys",
     subcategories: ["Cars", "Bikes", "Jeeps", "Scooters"]
-  }
+  },
+  { name: "Tricycles", slug: "tricycles", subcategories: [] },
 ];
 
 export function formatCategorySlug(name: string) {
@@ -27,4 +24,19 @@ export function formatCategorySlug(name: string) {
     .replace(/&/g, "and")
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/(^-|-$)/g, "");
+}
+
+export function resolveStoreCategory(rawCategory: string, rawName = "", rawDescription = "") {
+  const cat = String(rawCategory || "").toLowerCase();
+  const text = `${rawName} ${rawDescription}`.toLowerCase();
+
+  if (cat.includes("tricycle")) return STORE_CATEGORIES.find((c) => c.slug === "tricycles")!;
+  if (
+    text.includes("cycle") ||
+    text.includes("bicycle") ||
+    text.includes("bike ")
+  ) {
+    return STORE_CATEGORIES.find((c) => c.slug === "electric-cycles")!;
+  }
+  return STORE_CATEGORIES.find((c) => c.slug === "electric-cars-toys")!;
 }

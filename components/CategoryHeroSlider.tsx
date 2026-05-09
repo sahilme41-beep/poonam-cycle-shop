@@ -13,28 +13,28 @@ const defaultSlides: Slide[] = [
     image: "https://images.unsplash.com/photo-1517949908119-7207687c0c54?q=80&w=1800&auto=format&fit=crop"
   },
   {
-    title: "Gear Cycles",
-    subtitle: "Performance bikes for every rider",
-    cta: "/category/gear-cycles",
+    title: "Electric Cycles",
+    subtitle: "Comfort and power for daily rides",
+    cta: "/category/electric-cycles",
     image: "https://images.unsplash.com/photo-1520975916090-3105956dac38?q=80&w=1800&auto=format&fit=crop"
   },
   {
-    title: "MTB Cycles",
-    subtitle: "Rugged bikes for off-road adventures",
-    cta: "/category/mtb-cycles",
-    image: "https://images.unsplash.com/photo-1507035895480-2b3156c31fc8?q=80&w=1800&auto=format&fit=crop"
-  },
-  {
-    title: "Kids Cycles",
-    subtitle: "Safe and fun bikes for children",
-    cta: "/category/kids-cycles",
+    title: "Electric Cars & Toys",
+    subtitle: "Cars, jeeps and scooters for kids",
+    cta: "/category/electric-cars-toys",
     image: "https://images.unsplash.com/photo-1471506480208-91b3a4cc78be?q=80&w=1800&auto=format&fit=crop"
   },
   {
-    title: "Electric Ride-On",
-    subtitle: "Eco-friendly power-assisted rides",
-    cta: "/category/electric-ride-on",
+    title: "Tricycles",
+    subtitle: "Comfortable and stable three-wheelers",
+    cta: "/category/tricycles",
     image: "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?q=80&w=1800&auto=format&fit=crop"
+  },
+  {
+    title: "Explore Premium Collection",
+    subtitle: "Top picks from Poonam Cycles",
+    cta: "/shop",
+    image: "https://images.unsplash.com/photo-1517949908119-7207687c0c54?q=80&w=1800&auto=format&fit=crop"
   }
 ];
 

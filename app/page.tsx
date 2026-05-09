@@ -4,24 +4,18 @@ import Link from "next/link";
 import HomeHeroSlider from "@/components/HomeHeroSlider";
 
 const categoryCards: Record<string, string> = {
-  "electric-ride-on":
+  "electric-cars-toys":
     "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?q=80&w=900&auto=format&fit=crop",
   tricycles:
     "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?q=80&w=900&auto=format&fit=crop",
-  "kids-cycles":
-    "https://images.unsplash.com/photo-1471506480208-91b3a4cc78be?q=80&w=900&auto=format&fit=crop",
-  "gear-cycles":
-    "https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=900&auto=format&fit=crop",
-  "mtb-cycles":
-    "https://images.unsplash.com/photo-1576858574144-9ae1ebcf5ae5?q=80&w=900&auto=format&fit=crop"
+  "electric-cycles":
+    "https://images.unsplash.com/photo-1511994298241-608e28f14fde?q=80&w=900&auto=format&fit=crop"
 };
 
 const categoryDescriptions: Record<string, string> = {
-  "electric-ride-on": "Eco-friendly power-assisted rides",
+  "electric-cars-toys": "Ride-ons, cars, jeeps and scooters for kids",
   tricycles: "Stable and comfortable three-wheelers",
-  "kids-cycles": "Safe and fun bikes for children",
-  "gear-cycles": "Performance bikes for every rider",
-  "mtb-cycles": "Rugged bikes for off-road adventures"
+  "electric-cycles": "Daily comfort cycles with electric support"
 };
 
 export const dynamic = "force-dynamic";
@@ -37,7 +31,7 @@ export default async function Home() {
       <HomeHeroSlider />
       <section className="mx-auto max-w-7xl px-4 py-12">
         <h2 className="mb-5 text-center text-2xl font-bold text-brand-ink">Explore Our Collection</h2>
-        <div className="grid grid-cols-2 gap-3 md:grid-cols-5">
+        <div className="grid grid-cols-2 gap-3 md:grid-cols-3">
           {categories.map((c: any) => (
             <Link
               key={c.slug}
