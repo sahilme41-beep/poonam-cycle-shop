@@ -60,7 +60,7 @@ export default function Navbar() {
   }
 
   return (
-    <header className={`fixed top-8 z-40 w-full border-b border-green-100 bg-white/97 backdrop-blur transition-shadow duration-300 ${scrolled ? "shadow-md" : "shadow-sm"}`}>
+    <header className={`fixed top-8 z-40 w-full border-b border-green-100 bg-white/95 backdrop-blur-sm transition-shadow duration-300 ${scrolled ? "shadow-md" : "shadow-sm"}`}>
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-2.5">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2 shrink-0">

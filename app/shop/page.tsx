@@ -46,16 +46,20 @@ export default async function ShopPage({
   const activeCategory = searchParams.category || "";
 
   return (
-    <div className="mx-auto max-w-7xl px-4 py-8">
-      {/* Header */}
-      <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-        <div>
-          <p className="text-xs font-semibold uppercase tracking-widest text-brand-green">Our Products</p>
-          <h1 className="text-3xl font-extrabold text-brand-ink">Shop All Products</h1>
-          <p className="mt-1 text-sm text-slate-500">{products.length} product{products.length !== 1 ? "s" : ""} found</p>
+    <div className="pb-12">
+      {/* Hero */}
+      <div className="bg-brand-ink px-4 py-10 text-center md:py-14">
+        <p className="text-xs font-semibold uppercase tracking-widest text-brand-green">All Products</p>
+        <h1 className="mt-1 text-4xl font-extrabold text-white md:text-5xl">Shop Everything</h1>
+        <p className="mt-2 text-slate-400">Browse cycles, electric ride-ons, kids toys and more</p>
+        <div className="mt-5 flex justify-center">
+          <ShopSearchBar defaultValue={searchParams.q || ""} />
         </div>
-        <ShopSearchBar defaultValue={searchParams.q || ""} />
       </div>
+
+    <div className="mx-auto max-w-7xl px-4 py-8">
+      {/* Result count */}
+      <p className="mb-4 text-sm text-slate-500">{products.length} product{products.length !== 1 ? "s" : ""} found</p>
 
       {/* Category tabs */}
       <div className="mb-5 flex flex-wrap gap-2 text-sm">
@@ -87,7 +91,7 @@ export default async function ShopPage({
 
       {/* Product grid */}
       {pagedProducts.length > 0 ? (
-        <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
+        <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
           {pagedProducts.map((p: any) => (
             <ProductCard key={p._id} product={p} />
           ))}
@@ -121,6 +125,7 @@ export default async function ShopPage({
           </a>
         </div>
       )}
+    </div>
     </div>
   );
 }

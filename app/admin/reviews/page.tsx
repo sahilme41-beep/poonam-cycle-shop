@@ -1,6 +1,7 @@
 "use client";
 
 import { FormEvent, useEffect, useState } from "react";
+import { toast } from "sonner";
 
 export default function AdminReviewsPage() {
   const [reviews, setReviews] = useState<any[]>([]);
@@ -19,19 +20,24 @@ export default function AdminReviewsPage() {
 
   async function submit(e: FormEvent) {
     e.preventDefault();
-    await fetch("/api/reviews", {
+    const res = await fetch("/api/reviews", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ name, rating, message })
     });
+    if (!res.ok) { toast.error("Failed to add review"); return; }
+    toast.success("Review added");
     setName("");
     setRating(5);
     setMessage("");
     load();
   }
 
-  async function remove(id: string) {
-    await fetch("/api/reviews", { method: "DELETE", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ id }) });
+  async function remove(id: string, reviewName: string) {
+    if (!confirm(`Delete review by "${reviewName}"?`)) return;
+    const res = await fetch("/api/reviews", { method: "DELETE", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ id }) });
+    if (!res.ok) { toast.error("Delete failed"); return; }
+    toast.success("Review deleted");
     load();
   }
 
@@ -67,7 +73,7 @@ export default function AdminReviewsPage() {
               <p className="mt-1 font-semibold text-brand-ink">{r.name}</p>
               <p className="mt-1 text-sm text-slate-600">{r.message}</p>
             </div>
-            <button onClick={() => remove(r._id)} className="shrink-0 rounded-lg border border-red-200 px-3 py-1.5 text-xs font-medium text-red-500 hover:bg-red-50">Delete</button>
+            <button onClick={() => remove(r._id, r.name)} className="shrink-0 rounded-lg border border-red-200 px-3 py-1.5 text-xs font-medium text-red-500 hover:bg-red-50">Delete</button>
           </div>
         ))}
       </div>

@@ -51,14 +51,14 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <SessionProviderWrapper>
-        <AnnouncementBar />
-        <Navbar />
-        <main className="min-h-screen pb-16 pt-28 md:pb-0">{children}</main>
-        <Footer />
-        <WhatsappFloating />
-        <MobileCallBar />
-        <ScrollToTop />
-        <Toaster richColors position="top-right" />
+          <AnnouncementBar />
+          <Navbar />
+          <main className="min-h-screen pb-20 pt-28 md:pb-0">{children}</main>
+          <Footer />
+          <WhatsappFloating />
+          <MobileCallBar />
+          <ScrollToTop />
+          <Toaster richColors position="top-right" />
         </SessionProviderWrapper>
         <script
           type="application/ld+json"
