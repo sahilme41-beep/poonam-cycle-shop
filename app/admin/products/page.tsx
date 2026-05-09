@@ -7,9 +7,10 @@ const baseProduct = {
   name: "",
   price: 0,
   stock: 0,
-  category: "Electric",
+  category: "Electric Cycles",
   subcategory: "",
   visible: true,
+  featured: false,
   variants: [{ color: "Default", image: "", images: [] as string[] }],
   features: [],
   specs: []
@@ -96,6 +97,7 @@ export default function AdminProductsPage() {
       category: product.category,
       subcategory: product.subcategory || "",
       visible: product.visible ?? true,
+      featured: product.featured ?? false,
       variants: product.variants?.length
         ? product.variants.map((v: any) => ({
             ...v,
@@ -127,12 +129,30 @@ export default function AdminProductsPage() {
   return (
     <div className="mx-auto grid max-w-7xl gap-6 px-4 py-8 md:grid-cols-2">
       <form onSubmit={submit} className="space-y-2 rounded-xl bg-white p-4 shadow-sm">
-        <h1 className="text-2xl font-bold">{editingId ? "Edit Product" : "Add Product"}</h1>
+        <div className="flex items-center justify-between">
+          <h1 className="text-2xl font-bold">{editingId ? "Edit Product" : "Add Product"}</h1>
+          <a href="/admin" className="rounded-lg border border-green-200 px-3 py-1.5 text-sm font-medium text-brand-green hover:bg-brand-greenlight">&larr; Dashboard</a>
+        </div>
         <input className="w-full rounded border p-2" placeholder="Name" value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} />
         <input className="w-full rounded border p-2" type="number" placeholder="Price" value={form.price} onChange={(e) => setForm({ ...form, price: Number(e.target.value) })} />
         <input className="w-full rounded border p-2" type="number" placeholder="Stock" value={form.stock} onChange={(e) => setForm({ ...form, stock: Number(e.target.value) })} />
-        <input className="w-full rounded border p-2" placeholder="Category" value={form.category} onChange={(e) => setForm({ ...form, category: e.target.value })} />
-        <input className="w-full rounded border p-2" placeholder="Subcategory" value={form.subcategory} onChange={(e) => setForm({ ...form, subcategory: e.target.value })} />
+        <select className="w-full rounded border p-2" value={form.category} onChange={(e) => setForm({ ...form, category: e.target.value })}>
+          <option>Electric Cycles</option>
+          <option>Electric Cars &amp; Toys</option>
+          <option>Tricycles</option>
+          <option>Kids &amp; MTB Cycles</option>
+        </select>
+        <input className="w-full rounded border p-2" placeholder="Subcategory (optional)" value={form.subcategory} onChange={(e) => setForm({ ...form, subcategory: e.target.value })} />
+        <div className="flex gap-4">
+          <label className="flex items-center gap-2 text-sm">
+            <input type="checkbox" checked={form.featured} onChange={(e) => setForm({ ...form, featured: e.target.checked })} />
+            <span>⭐ Featured on Homepage</span>
+          </label>
+          <label className="flex items-center gap-2 text-sm">
+            <input type="checkbox" checked={form.visible} onChange={(e) => setForm({ ...form, visible: e.target.checked })} />
+            <span>👁 Visible in Shop</span>
+          </label>
+        </div>
         <input className="w-full rounded border p-2" placeholder="Variant color" value={form.variants[0].color} onChange={(e) => setForm({ ...form, variants: [{ ...form.variants[0], color: e.target.value }] })} />
         <input
           className="w-full rounded border p-2"
@@ -191,14 +211,16 @@ export default function AdminProductsPage() {
         </div>
       </form>
       <div className="rounded-xl bg-white p-4 shadow-sm">
-        <h2 className="text-xl font-bold">Products</h2>
+        <h2 className="text-xl font-bold">All Products ({products.length})</h2>
         <div className="mt-3 space-y-2">
           {products.map((p) => (
             <div key={p._id} className="flex items-center justify-between rounded border p-2">
               <div>
                 <p className="font-medium">{p.name}</p>
                 <p className="text-xs text-slate-500">
-                  Rs {p.price} | Order: {p.order || 0}
+                  ₹{p.price} | Stock: {p.stock} | Order: {p.order || 0}
+                  {p.featured ? " | ⭐ Featured" : ""}
+                  {p.visible === false ? " | 🚫 Hidden" : ""}
                 </p>
               </div>
               <div className="flex gap-1">

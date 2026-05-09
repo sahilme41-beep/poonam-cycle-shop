@@ -70,7 +70,14 @@ export default function AdminCategoriesPage() {
 
   return (
     <div className="mx-auto max-w-4xl px-4 py-8">
-      <h1 className="text-2xl font-bold">Manage Categories</h1>
+      <div className="mb-5 flex items-center justify-between">
+        <div>
+          <p className="text-xs font-semibold uppercase tracking-widest text-brand-green">Admin</p>
+          <h1 className="text-2xl font-extrabold text-brand-ink">Manage Categories</h1>
+          <p className="mt-1 text-xs text-slate-500">Add subcategories comma-separated, e.g. Cars, Bikes, Jeeps</p>
+        </div>
+        <a href="/admin" className="rounded-lg border border-green-200 px-4 py-2 text-sm font-medium text-brand-green hover:bg-brand-greenlight">&larr; Dashboard</a>
+      </div>
       <form onSubmit={add} className="mt-4 grid gap-2 rounded bg-white p-4 shadow-sm md:grid-cols-4">
         <input className="rounded border p-2" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} />
         <input className="rounded border p-2" placeholder="Slug" value={slug} onChange={(e) => setSlug(e.target.value)} />
