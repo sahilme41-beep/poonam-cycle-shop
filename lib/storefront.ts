@@ -4,10 +4,32 @@ import { Product } from "@/models/Product";
 import { normalizeCategoryName, STORE_CATEGORIES } from "@/lib/constants";
 
 function normalizeProductCategoryFields(products: any[]) {
-  return products.map((p: any) => ({
+  const normalized = products.map((p: any) => ({
     ...p,
     category: normalizeCategoryName(String(p.category || ""), String(p.name || ""), String(p.description || ""))
   }));
+
+  // Hide duplicate legacy records imported from older snapshots.
+  const byKey = new Map<string, any>();
+  for (const p of normalized) {
+    const key = String(p.notionKey || p.name || p._id || "").toLowerCase().trim();
+    if (!key) continue;
+    const existing = byKey.get(key);
+    if (!existing) {
+      byKey.set(key, p);
+      continue;
+    }
+    const existingHasNotion = Boolean(existing.notionKey);
+    const currentHasNotion = Boolean(p.notionKey);
+    if (!existingHasNotion && currentHasNotion) {
+      byKey.set(key, p);
+      continue;
+    }
+    const existingTime = new Date(existing.updatedAt || existing.createdAt || 0).getTime();
+    const currentTime = new Date(p.updatedAt || p.createdAt || 0).getTime();
+    if (currentTime > existingTime) byKey.set(key, p);
+  }
+  return Array.from(byKey.values());
 }
 
 export async function getStoreProducts() {
