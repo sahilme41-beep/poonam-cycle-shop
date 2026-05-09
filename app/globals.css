@@ -12,7 +12,7 @@ button {
 }
 
 .card-surface {
-  @apply rounded-2xl border border-[#e9d8c7] bg-brand-cream shadow-sm;
+  @apply rounded-2xl border border-[#c8e6c9] bg-white shadow-sm;
 }
 
 .section-wrap {
@@ -20,7 +20,7 @@ button {
 }
 
 .gradient-text {
-  @apply bg-gradient-to-r from-brand-brown via-brand-brown2 to-amber-900 bg-clip-text text-transparent;
+  @apply bg-gradient-to-r from-brand-green via-brand-green2 to-green-700 bg-clip-text text-transparent;
 }
 
 @keyframes marquee {

@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 90" width="220" height="90">
+  <!-- Grey background rectangle -->
+  <rect width="220" height="90" rx="8" fill="#6B6B6B"/>
+  <!-- Black bar at bottom for subtitle -->
+  <rect x="0" y="62" width="220" height="28" rx="0" fill="#1a1a1a"/>
+  <rect x="0" y="62" width="220" height="8" rx="0" fill="#1a1a1a"/>
+  <!-- Bottom rounded corners -->
+  <rect x="0" y="76" width="220" height="14" rx="0" fill="#1a1a1a"/>
+  <rect x="0" y="76" width="10" height="14" rx="0" fill="#1a1a1a"/>
+  <rect x="210" y="76" width="10" height="14" rx="0" fill="#1a1a1a"/>
+  <!-- Black bottom bar with border radius -->
+  <rect x="0" y="62" width="220" height="28" fill="#1a1a1a"/>
+  <!-- Rounded bottom of outer rect -->
+
+  <!-- "P" letter -->
+  <text x="14" y="56" font-family="Arial Black, Impact, sans-serif" font-weight="900" font-size="42" fill="white" letter-spacing="1">P</text>
+  <!-- First O (empty space for cyclist) at approx x=52 -->
+  <!-- Cyclist icon in place of first O -->
+  <g transform="translate(52, 14) scale(0.72)">
+    <!-- Wheel back -->
+    <circle cx="10" cy="38" r="10" fill="none" stroke="#4CAF50" stroke-width="3"/>
+    <!-- Wheel front -->
+    <circle cx="48" cy="38" r="10" fill="none" stroke="#4CAF50" stroke-width="3"/>
+    <!-- Frame -->
+    <line x1="10" y1="38" x2="28" y2="18" stroke="#4CAF50" stroke-width="3"/>
+    <line x1="28" y1="18" x2="48" y2="38" stroke="#4CAF50" stroke-width="3"/>
+    <line x1="28" y1="18" x2="29" y2="38" stroke="#4CAF50" stroke-width="3"/>
+    <line x1="10" y1="38" x2="29" y2="38" stroke="#4CAF50" stroke-width="2.5"/>
+    <!-- Handlebar -->
+    <line x1="38" y1="20" x2="48" y2="18" stroke="#4CAF50" stroke-width="3"/>
+    <!-- Seat -->
+    <line x1="22" y1="22" x2="30" y2="20" stroke="#4CAF50" stroke-width="3"/>
+    <!-- Rider head -->
+    <circle cx="46" cy="10" r="6" fill="#4CAF50"/>
+    <!-- Rider body -->
+    <line x1="46" y1="16" x2="38" y2="26" stroke="#4CAF50" stroke-width="3"/>
+    <line x1="38" y1="26" x2="29" y2="24" stroke="#4CAF50" stroke-width="3"/>
+    <!-- Rider legs -->
+    <line x1="38" y1="26" x2="34" y2="36" stroke="#4CAF50" stroke-width="3"/>
+    <line x1="38" y1="26" x2="44" y2="34" stroke="#4CAF50" stroke-width="2.5"/>
+  </g>
+  <!-- "NAM" letters -->
+  <text x="95" y="56" font-family="Arial Black, Impact, sans-serif" font-weight="900" font-size="42" fill="white" letter-spacing="1">NAM</text>
+
+  <!-- Subtitle -->
+  <text x="110" y="80" font-family="Arial, sans-serif" font-weight="700" font-size="13" fill="white" text-anchor="middle" letter-spacing="2">CYCLE &amp; TOY WORLD</text>
+</svg>

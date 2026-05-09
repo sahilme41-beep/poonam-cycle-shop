@@ -13,7 +13,7 @@ export default async function AnnouncementBar() {
     // fallback to static text when DB isn't reachable
   }
   return (
-    <div className="fixed top-0 left-0 z-50 w-full bg-amber-900 py-2 text-sm text-amber-50">
+    <div className="fixed top-0 left-0 z-50 w-full bg-brand-green py-2 text-sm text-white">
       <div className="marquee px-4">
         {text}
       </div>

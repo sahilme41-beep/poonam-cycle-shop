@@ -33,22 +33,25 @@ export default async function Home() {
       <HomeHeroSlider images={mediaSettings.homeBannerImages} />
       <section className="mx-auto max-w-7xl px-4 py-12">
         <h2 className="mb-5 text-center text-2xl font-bold text-brand-ink">Explore Our Collection</h2>
-        <div className="grid grid-cols-2 gap-3 md:grid-cols-3">
+        <div className="grid grid-cols-2 gap-4 md:grid-cols-3">
           {categories.map((c: any) => (
             <Link
               key={c.slug}
               href={`/category/${c.slug}`}
-              className="group overflow-hidden rounded-xl border border-[#e9d8c7] bg-brand-cream shadow-sm hover:shadow-md"
+              className="group overflow-hidden rounded-2xl border border-green-100 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
             >
-              <img
-                src={mergedCategoryCards[c.slug] || "https://images.unsplash.com/photo-1507035895480-2b3156c31fc8?w=600"}
-                alt={c.name}
-                className="h-28 w-full object-cover sm:h-40"
-              />
-              <div className="p-3">
-                <p className="font-semibold text-brand-ink group-hover:text-brand-brown">{c.name}</p>
-                <p className="mt-1 text-xs text-slate-600">{categoryDescriptions[c.slug] || "Explore the latest collection"}</p>
-                <p className="mt-2 text-xs font-semibold text-brand-brown">
+              <div className="relative overflow-hidden">
+                <img
+                  src={mergedCategoryCards[c.slug] || "https://images.unsplash.com/photo-1507035895480-2b3156c31fc8?w=600"}
+                  alt={c.name}
+                  className="h-32 w-full object-cover transition duration-300 group-hover:scale-105 sm:h-44"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+              </div>
+              <div className="p-4">
+                <p className="font-bold text-brand-ink group-hover:text-brand-green">{c.name}</p>
+                <p className="mt-1 text-xs text-slate-500">{categoryDescriptions[c.slug] || "Explore the latest collection"}</p>
+                <p className="mt-2 inline-flex items-center gap-1 text-xs font-semibold text-brand-green">
                   Explore Collection <span aria-hidden>→</span>
                 </p>
               </div>
@@ -59,7 +62,7 @@ export default async function Home() {
       <section className="mx-auto max-w-7xl px-4 pb-12">
         <div className="mb-4 flex items-center justify-between">
           <h2 className="text-2xl font-bold text-brand-ink">Featured Products</h2>
-          <Link href="/shop" className="text-sm font-semibold text-brand-brown hover:text-brand-brown2">View all</Link>
+          <Link href="/shop" className="text-sm font-semibold text-brand-green hover:text-brand-green2">View all →</Link>
         </div>
         <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
           {featuredProducts.map((p: any) => (

@@ -1,31 +1,39 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Footer() {
   return (
-    <footer className="mt-16 border-t border-[#e9d8c7] bg-brand-cream">
-      <div className="mx-auto grid max-w-7xl gap-6 px-4 py-10 text-sm md:grid-cols-3">
-        <div>
-          <h4 className="text-base font-semibold text-brand-ink">Poonam Cycle & Toy World</h4>
-          <p className="mt-2 text-slate-600">Near Kaswam Hospital, Gandhinagar, Kolhapur, Maharashtra</p>
-          <p className="mt-2 text-xs text-slate-500">Trusted electric ride-on and tricycle destination for families.</p>
+    <footer className="mt-16 border-t border-green-100 bg-brand-ink">
+      <div className="mx-auto grid max-w-7xl gap-8 px-4 py-12 text-sm md:grid-cols-4">
+        <div className="md:col-span-2">
+          <Image src="/logo.svg" alt="Poonam Cycle & Toy World" width={150} height={56} className="h-14 w-auto brightness-0 invert" />
+          <p className="mt-3 max-w-xs text-slate-400">Your trusted destination for premium cycles, kids electric rides, and toys in Kolhapur.</p>
+          <p className="mt-3 text-slate-400">Near Kaswam Hospital, Gandhinagar,<br/>Kolhapur, Maharashtra</p>
         </div>
         <div>
-          <p className="font-medium text-slate-800">Contact</p>
-          <p className="mt-2 text-slate-600">Mobile: 7588267528 | Sales: 9359165468</p>
-          <p className="text-slate-600">Inquiry: 9422043565 / 7057402575</p>
+          <p className="mb-3 font-semibold text-white">Contact</p>
+          <div className="space-y-1.5 text-slate-400">
+            <p><a href="tel:7588267528" className="hover:text-green-400">📞 7588267528</a> (Mobile)</p>
+            <p><a href="tel:9359165468" className="hover:text-green-400">📞 9359165468</a> (Sales)</p>
+            <p><a href="tel:9422043565" className="hover:text-green-400">📞 9422043565</a> (Inquiry)</p>
+            <p><a href="tel:7057902565" className="hover:text-green-400">📞 7057902565</a> (Inquiry)</p>
+            <p className="mt-2"><a href="https://instagram.com/poonam_cycle" target="_blank" rel="noreferrer" className="hover:text-green-400">Instagram: @poonam_cycle</a></p>
+          </div>
         </div>
-        <div className="space-y-2">
-          <p className="font-medium text-slate-800">Quick links</p>
-          <Link href="/shop" className="block text-slate-600 hover:text-brand-brown">
-            Shop
-          </Link>
-          <Link href="/about" className="block text-slate-600 hover:text-brand-brown">
-            About
-          </Link>
-          <Link href="/contact" className="block text-slate-600 hover:text-brand-brown">
-            Contact
-          </Link>
+        <div>
+          <p className="mb-3 font-semibold text-white">Quick Links</p>
+          <div className="space-y-2">
+            <Link href="/shop" className="block text-slate-400 hover:text-green-400">Shop</Link>
+            <Link href="/category/electric-cycles" className="block text-slate-400 hover:text-green-400">Electric Cycles</Link>
+            <Link href="/category/electric-cars-toys" className="block text-slate-400 hover:text-green-400">Electric Cars & Toys</Link>
+            <Link href="/category/tricycles" className="block text-slate-400 hover:text-green-400">Tricycles</Link>
+            <Link href="/about" className="block text-slate-400 hover:text-green-400">About</Link>
+            <Link href="/contact" className="block text-slate-400 hover:text-green-400">Contact</Link>
+          </div>
         </div>
+      </div>
+      <div className="border-t border-slate-800 py-4 text-center text-xs text-slate-500">
+        © {new Date().getFullYear()} Poonam Cycle & Toy World. All rights reserved.
       </div>
     </footer>
   );

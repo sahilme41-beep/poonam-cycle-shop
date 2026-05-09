@@ -6,11 +6,14 @@ const config: Config = {
     extend: {
       colors: {
         brand: {
-          brown: "#6B3F1D",
-          brown2: "#7A4A23",
-          beige: "#F7F0E6",
-          cream: "#FFF9F1",
-          ink: "#1F1B16"
+          green: "#2E7D32",
+          green2: "#388E3C",
+          greenlight: "#E8F5E9",
+          cream: "#F9FAFB",
+          beige: "#F1F5F1",
+          ink: "#1A1A2E",
+          brown: "#2E7D32",
+          brown2: "#388E3C"
         }
       }
     }

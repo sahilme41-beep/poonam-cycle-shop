@@ -1,10 +1,13 @@
 import type { Metadata } from "next";
+import { Inter } from "next/font/google";
 import "./globals.css";
 import AnnouncementBar from "@/components/AnnouncementBar";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import WhatsappFloating from "@/components/WhatsappFloating";
 import { Toaster } from "sonner";
+
+const inter = Inter({ subsets: ["latin"], display: "swap" });
 
 function getMetadataBase() {
   const rawUrl = process.env.NEXTAUTH_URL?.trim();
@@ -38,7 +41,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>
+      <body className={inter.className}>
         <AnnouncementBar />
         <Navbar />
         <main className="min-h-screen pt-28">{children}</main>
@@ -53,10 +56,12 @@ export default function RootLayout({
               "@type": "Store",
               name: "Poonam Cycle & Toy World",
               telephone: "+91-7588267528",
+              url: "https://poonamcycleworld.in",
               address: {
                 "@type": "PostalAddress",
                 streetAddress: "Near Kaswam Hospital, Gandhinagar",
                 addressLocality: "Kolhapur",
+                postalCode: "416002",
                 addressRegion: "Maharashtra",
                 addressCountry: "IN"
               }

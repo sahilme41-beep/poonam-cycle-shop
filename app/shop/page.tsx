@@ -42,14 +42,14 @@ export default async function ShopPage({
 
   return (
     <div className="mx-auto max-w-7xl px-4 py-8">
-      <h1 className="mb-1 text-3xl font-bold text-brand-ink">Shop</h1>
+      <h1 className="mb-1 text-3xl font-bold text-brand-ink">Shop All Products</h1>
       <p className="mb-5 text-sm text-slate-600">Showing {products.length} products</p>
       <div className="mb-5 flex flex-wrap gap-2 text-sm">
-        <a className="rounded-full border border-[#e0cdbb] bg-brand-cream px-3 py-1.5 hover:border-brand-brown hover:text-brand-brown" href="/shop?stock=in">In Stock</a>
-        <a className="rounded-full border border-[#e0cdbb] bg-brand-cream px-3 py-1.5 hover:border-brand-brown hover:text-brand-brown" href="/shop?sort=price_asc">Price Low to High</a>
-        <a className="rounded-full border border-[#e0cdbb] bg-brand-cream px-3 py-1.5 hover:border-brand-brown hover:text-brand-brown" href="/shop?sort=price_desc">Price High to Low</a>
-        <a className="rounded-full border border-[#e0cdbb] bg-brand-cream px-3 py-1.5 hover:border-brand-brown hover:text-brand-brown" href="/shop?min=5000&max=20000">Rs 5k - 20k</a>
-        <a className="rounded-full border border-[#e0cdbb] bg-brand-cream px-3 py-1.5 hover:border-brand-brown hover:text-brand-brown" href="/shop">Reset</a>
+        <a className="rounded-full border border-green-200 bg-brand-greenlight px-3 py-1.5 text-brand-green hover:bg-green-100" href="/shop?stock=in">In Stock</a>
+        <a className="rounded-full border border-green-200 bg-brand-greenlight px-3 py-1.5 text-brand-green hover:bg-green-100" href="/shop?sort=price_asc">Price: Low → High</a>
+        <a className="rounded-full border border-green-200 bg-brand-greenlight px-3 py-1.5 text-brand-green hover:bg-green-100" href="/shop?sort=price_desc">Price: High → Low</a>
+        <a className="rounded-full border border-green-200 bg-brand-greenlight px-3 py-1.5 text-brand-green hover:bg-green-100" href="/shop?min=5000&max=20000">₹5k – ₹20k</a>
+        <a className="rounded-full border border-slate-200 bg-white px-3 py-1.5 text-slate-500 hover:bg-slate-50" href="/shop">✕ Reset</a>
       </div>
       <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
         {pagedProducts.map((p: any) => (
