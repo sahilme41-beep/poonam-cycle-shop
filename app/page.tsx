@@ -153,7 +153,7 @@ export default async function Home() {
           <div className="mb-6 text-center">
             <p className="text-xs font-semibold uppercase tracking-widest text-brand-green">Find Us</p>
             <h2 className="mt-1 text-3xl font-extrabold text-brand-ink">Visit Our Store</h2>
-            <p className="mt-2 text-sm text-slate-500">Near Kaswam Hospital, Gandhinagar, Kolhapur, Maharashtra</p>
+            <p className="mt-2 text-sm text-slate-500">Near Keswani Hospital, Gandhinagar, Kolhapur, Maharashtra</p>
           </div>
           <div className="overflow-hidden rounded-2xl border border-green-100 shadow-md">
             <iframe
