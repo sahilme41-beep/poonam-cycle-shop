@@ -1,7 +1,6 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
-import Link from "next/link";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const slides = [
@@ -78,35 +77,6 @@ export default function HomeHeroSlider({ images }: { images?: string[] }) {
         className="hero-img-enter absolute inset-0 h-full w-full object-contain"
       />
 
-      {/* Gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/30 to-transparent" />
-
-      {/* Text overlay */}
-      <div className="absolute inset-0 flex items-center px-6 md:px-16">
-        <div key={`text-${animKey}`} className="animate-fade-in-up max-w-lg">
-          <span className="inline-block rounded-full bg-brand-green/90 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-white">
-            Poonam Cycle & Toy World
-          </span>
-          <h1 className="mt-3 text-3xl font-extrabold leading-tight text-white drop-shadow-lg sm:text-5xl">
-            {active.title}
-          </h1>
-          <p className="mt-2 text-sm text-white/80 sm:text-base">{active.subtitle}</p>
-          <div className="mt-5 flex flex-wrap gap-3">
-            <Link
-              href={active.cta}
-              className="rounded-xl bg-brand-green px-6 py-3 font-bold text-white shadow-lg hover:bg-brand-green2 hover:shadow-xl"
-            >
-              {active.ctaLabel} →
-            </Link>
-            <Link
-              href="/contact"
-              className="rounded-xl border border-white/60 bg-white/10 px-6 py-3 font-semibold text-white backdrop-blur hover:bg-white/20"
-            >
-              Contact Us
-            </Link>
-          </div>
-        </div>
-      </div>
 
       {/* Prev / Next arrows */}
       <button
