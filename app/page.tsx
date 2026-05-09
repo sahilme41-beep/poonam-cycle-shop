@@ -75,28 +75,20 @@ export default async function Home() {
             <Link
               key={c.slug}
               href={`/category/${c.slug}`}
-              className="group relative overflow-hidden rounded-2xl shadow-md transition duration-300 hover:-translate-y-1 hover:shadow-2xl"
-              style={{ aspectRatio: "4/3" }}
+              className="group relative overflow-hidden rounded-2xl shadow-md transition hover:-translate-y-1 hover:shadow-xl"
             >
               <img
-                src={mergedCategoryCards[c.slug] || "https://images.unsplash.com/photo-1507035895480-2b3156c31fc8?w=800"}
+                src={mergedCategoryCards[c.slug] || "https://images.unsplash.com/photo-1507035895480-2b3156c31fc8?w=600"}
                 alt={c.name}
-                className="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-110"
+                className="h-40 w-full object-cover transition duration-500 group-hover:scale-110 sm:h-56"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-black/5 transition duration-300 group-hover:from-black/90" />
-              <div className="absolute inset-0 flex flex-col justify-end p-4 sm:p-5">
-                <p className="text-base font-extrabold text-white drop-shadow-lg sm:text-xl">{c.name}</p>
-                <p className="mt-1 line-clamp-1 text-xs text-white/75 sm:text-sm">{categoryDescriptions[c.slug] || "Explore collection"}</p>
-                <div className="mt-3 flex items-center gap-2">
-                  <span className="rounded-full bg-brand-green px-3 py-1 text-xs font-bold text-white shadow transition group-hover:bg-white group-hover:text-brand-green">
-                    Explore →
-                  </span>
-                  {c.subcategories?.length > 0 && (
-                    <span className="rounded-full bg-white/20 px-2 py-0.5 text-xs text-white backdrop-blur">
-                      {c.subcategories.length} types
-                    </span>
-                  )}
-                </div>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent" />
+              <div className="absolute bottom-0 left-0 right-0 p-4">
+                <p className="text-lg font-extrabold text-white drop-shadow">{c.name}</p>
+                <p className="mt-0.5 text-xs text-white/80">{categoryDescriptions[c.slug] || "Explore the latest collection"}</p>
+                <span className="mt-2 inline-flex items-center gap-1 rounded-full bg-brand-green/90 px-2.5 py-0.5 text-xs font-semibold text-white">
+                  Explore →
+                </span>
               </div>
             </Link>
           ))}
