@@ -1,8 +1,8 @@
 import ProductCard from "@/components/ProductCard";
-import { getFeaturedProducts, getReviews, getStoreCategories, getStoreMediaSettings } from "@/lib/storefront";
+import { getFeaturedProducts, getReviews, getStoreMediaSettings } from "@/lib/storefront";
 import Link from "next/link";
 import HomeHeroSlider from "@/components/HomeHeroSlider";
-import { BUSINESS } from "@/lib/constants";
+import { BUSINESS, STORE_CATEGORIES } from "@/lib/constants";
 
 const categoryCards: Record<string, string> = {
   "electric-cars-toys":
@@ -32,13 +32,15 @@ const trustBadges = [
 export const dynamic = "force-dynamic";
 
 export default async function Home() {
-  const [categories, featuredProducts, mediaSettings, reviews] = await Promise.all([
-    getStoreCategories(),
+  const [featuredProducts, mediaSettings, reviews] = await Promise.all([
     getFeaturedProducts(8),
     getStoreMediaSettings(),
     getReviews(6)
   ]);
+  // Always use STORE_CATEGORIES as source of truth so all 4 categories always appear
+  // DB categoryCardImages override the default Unsplash images when admin uploads
   const mergedCategoryCards = { ...categoryCards, ...(mediaSettings.categoryCardImages || {}) };
+  const categories = STORE_CATEGORIES;
 
   return (
     <div className="pb-10">
@@ -67,7 +69,7 @@ export default async function Home() {
           <h2 className="mt-1 text-3xl font-extrabold text-brand-ink">Explore Our Collection</h2>
         </div>
         <div className="grid grid-cols-2 gap-5 lg:grid-cols-4">
-          {categories.map((c: any) => (
+          {categories.map((c) => (
             <Link
               key={c.slug}
               href={`/category/${c.slug}`}
