@@ -2,6 +2,7 @@ import { Schema, model, models } from "mongoose";
 
 const ProductSchema = new Schema(
   {
+    notionKey: { type: String, default: "", index: true },
     name: { type: String, required: true },
     price: { type: Number, required: true },
     category: { type: String, required: true },

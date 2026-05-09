@@ -59,7 +59,7 @@ export default function ImageCarousel({
       >
         {safeImages.map((src, i) => (
           <div key={`${src}-${i}`} className="min-w-full">
-            <img src={src} alt={`${alt} ${i + 1}`} className={`w-full object-cover ${imageClassName}`} />
+            <img src={src} alt={`${alt} ${i + 1}`} className={`w-full bg-white object-contain ${imageClassName}`} />
           </div>
         ))}
       </div>

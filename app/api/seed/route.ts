@@ -6,6 +6,30 @@ import { Review } from "@/models/Review";
 import { Setting } from "@/models/Setting";
 import notionProducts from "@/notion-products.json";
 import { STORE_CATEGORIES, formatCategorySlug } from "@/lib/constants";
+import fs from "fs";
+import path from "path";
+
+function getAllLocalImages(item: any) {
+  const explicit = Array.isArray(item.localImages) ? item.localImages.filter(Boolean) : [];
+  if (explicit.length) return explicit;
+  if (!item.localImage) return [];
+
+  const filename = String(item.localImage).split("/").pop() || "";
+  const dot = filename.lastIndexOf(".");
+  const ext = dot > -1 ? filename.slice(dot) : ".jpg";
+  const base = dot > -1 ? filename.slice(0, dot) : filename;
+
+  const productsDir = path.join(process.cwd(), "public", "products");
+  if (!fs.existsSync(productsDir)) return [item.localImage];
+
+  const matches = fs
+    .readdirSync(productsDir)
+    .filter((name) => name === `${base}${ext}` || name.startsWith(`${base}-`))
+    .sort((a, b) => a.localeCompare(b, undefined, { numeric: true }));
+
+  const urls = matches.map((name) => `/products/${name}`);
+  return urls.length ? urls : [item.localImage];
+}
 
 export async function POST() {
   try {
@@ -24,12 +48,10 @@ export async function POST() {
             c.name.toLowerCase() === String(item.category || "").toLowerCase() ||
             c.slug === formatCategorySlug(String(item.category || ""))
         ) || STORE_CATEGORIES[0];
-      const images = Array.isArray(item.localImages)
-        ? item.localImages
-        : item.localImage
-          ? [item.localImage]
-          : [];
+      const images = getAllLocalImages(item);
+      const notionKey = `${formatCategorySlug(String(item.category || knownCategory.name))}-${item.index ?? idx}`;
       return {
+        notionKey,
         name: item.name,
         price: item.price ?? item.mrp ?? 0,
         category: knownCategory.name,
@@ -46,7 +68,14 @@ export async function POST() {
     });
 
     for (const p of starterProducts) {
-      await Product.findOneAndUpdate({ name: p.name }, p, { upsert: true, new: true });
+      const existing = await Product.findOne({
+        $or: [{ notionKey: p.notionKey }, { name: p.name }]
+      });
+      if (existing) {
+        await Product.findByIdAndUpdate(existing._id, p, { new: true });
+      } else {
+        await Product.create(p);
+      }
     }
 
     await Review.findOneAndUpdate(
