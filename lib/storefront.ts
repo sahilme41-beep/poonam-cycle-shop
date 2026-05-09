@@ -6,7 +6,8 @@ import { STORE_CATEGORIES } from "@/lib/constants";
 export async function getStoreProducts() {
   try {
     await connectDB();
-    return await Product.find({ visible: true }).sort({ order: 1, createdAt: -1 }).lean();
+    // Treat legacy docs (missing `visible`) as visible.
+    return await Product.find({ visible: { $ne: false } }).sort({ order: 1, createdAt: -1 }).lean();
   } catch {
     return [];
   }
@@ -15,7 +16,8 @@ export async function getStoreProducts() {
 export async function getFeaturedProducts(limit = 8) {
   try {
     await connectDB();
-    return await Product.find({ visible: true, featured: true })
+    // Treat legacy docs (missing `visible`) as visible.
+    return await Product.find({ visible: { $ne: false }, featured: true })
       .sort({ order: 1, createdAt: -1 })
       .limit(limit)
       .lean();
