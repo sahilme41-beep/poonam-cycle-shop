@@ -9,7 +9,14 @@
     ],
     "mrp": 17000,
     "price": 8999,
-    "localImage": "/products/electric-1.jpg"
+    "localImage": "/products/electric-1.jpg",
+    "localImages": [
+      "/products/electric-1-1.jpg",
+      "/products/electric-1-2.jpg",
+      "/products/electric-1-3.jpg",
+      "/products/electric-1-4.jpg",
+      "/products/electric-1.jpg"
+    ]
   },
   {
     "index": 2,
@@ -22,7 +29,18 @@
     ],
     "mrp": 16000,
     "price": 7999,
-    "localImage": "/products/electric-2.jpg"
+    "localImage": "/products/electric-2.jpg",
+    "localImages": [
+      "/products/electric-2-1.jpg",
+      "/products/electric-2-2.jpg",
+      "/products/electric-2-3.jpg",
+      "/products/electric-2-4.jpg",
+      "/products/electric-2-5.jpg",
+      "/products/electric-2-6.jpg",
+      "/products/electric-2-7.jpg",
+      "/products/electric-2-8.jpg",
+      "/products/electric-2.jpg"
+    ]
   },
   {
     "index": 3,
@@ -34,7 +52,16 @@
     ],
     "mrp": 10000,
     "price": 4999,
-    "localImage": "/products/electric-3.jpg"
+    "localImage": "/products/electric-3.jpg",
+    "localImages": [
+      "/products/electric-3-1.jpg",
+      "/products/electric-3-2.jpg",
+      "/products/electric-3-3.jpg",
+      "/products/electric-3-4.jpg",
+      "/products/electric-3-5.jpg",
+      "/products/electric-3-6.jpg",
+      "/products/electric-3.jpg"
+    ]
   },
   {
     "index": 4,
@@ -47,7 +74,12 @@
     ],
     "mrp": 15000,
     "price": 6999,
-    "localImage": "/products/electric-4.jpg"
+    "localImage": "/products/electric-4.jpg",
+    "localImages": [
+      "/products/electric-4-1.jpg",
+      "/products/electric-4-2.jpg",
+      "/products/electric-4.jpg"
+    ]
   },
   {
     "index": 5,
@@ -59,7 +91,16 @@
     ],
     "mrp": 13000,
     "price": 6500,
-    "localImage": "/products/electric-5.jpg"
+    "localImage": "/products/electric-5.jpg",
+    "localImages": [
+      "/products/electric-5-1.jpg",
+      "/products/electric-5-2.jpg",
+      "/products/electric-5-3.jpg",
+      "/products/electric-5-4.jpg",
+      "/products/electric-5-5.jpg",
+      "/products/electric-5-6.jpg",
+      "/products/electric-5.jpg"
+    ]
   },
   {
     "index": 6,
@@ -72,7 +113,11 @@
     ],
     "mrp": null,
     "price": null,
-    "localImage": "/products/electric-6.jpg"
+    "localImage": "/products/electric-6.jpg",
+    "localImages": [
+      "/products/electric-6-1.jpg",
+      "/products/electric-6.jpg"
+    ]
   },
   {
     "index": 7,
@@ -85,7 +130,12 @@
     ],
     "mrp": 17000,
     "price": 8999,
-    "localImage": "/products/electric-7.jpg"
+    "localImage": "/products/electric-7.jpg",
+    "localImages": [
+      "/products/electric-7-1.jpg",
+      "/products/electric-7-2.jpg",
+      "/products/electric-7.jpg"
+    ]
   },
   {
     "index": 8,
@@ -98,7 +148,13 @@
     ],
     "mrp": 25000,
     "price": 11999,
-    "localImage": "/products/electric-8.jpg"
+    "localImage": "/products/electric-8.jpg",
+    "localImages": [
+      "/products/electric-8-1.jpg",
+      "/products/electric-8-2.jpg",
+      "/products/electric-8-3.jpg",
+      "/products/electric-8.jpg"
+    ]
   },
   {
     "index": 9,
@@ -111,7 +167,12 @@
     ],
     "mrp": 25000,
     "price": 11999,
-    "localImage": "/products/electric-9.jpg"
+    "localImage": "/products/electric-9.jpg",
+    "localImages": [
+      "/products/electric-9-1.jpg",
+      "/products/electric-9-2.jpg",
+      "/products/electric-9.jpg"
+    ]
   },
   {
     "index": 10,
@@ -125,7 +186,12 @@
     ],
     "mrp": 16000,
     "price": 9999,
-    "localImage": "/products/electric-10.jpg"
+    "localImage": "/products/electric-10.jpg",
+    "localImages": [
+      "/products/electric-10-1.jpg",
+      "/products/electric-10-2.jpg",
+      "/products/electric-10.jpg"
+    ]
   },
   {
     "index": 11,
@@ -138,7 +204,11 @@
     ],
     "mrp": 17000,
     "price": 10499,
-    "localImage": "/products/electric-11.jpg"
+    "localImage": "/products/electric-11.jpg",
+    "localImages": [
+      "/products/electric-11-1.jpg",
+      "/products/electric-11.jpg"
+    ]
   },
   {
     "index": 12,
@@ -151,7 +221,11 @@
     ],
     "mrp": 11000,
     "price": 5499,
-    "localImage": "/products/electric-12.jpg"
+    "localImage": "/products/electric-12.jpg",
+    "localImages": [
+      "/products/electric-12-1.jpg",
+      "/products/electric-12.jpg"
+    ]
   },
   {
     "index": 15,
@@ -164,7 +238,11 @@
     ],
     "mrp": 3600,
     "price": 1200,
-    "localImage": "/products/tricycle-15.jpg"
+    "localImage": "/products/tricycle-15.jpg",
+    "localImages": [
+      "/products/tricycle-15-1.jpg",
+      "/products/tricycle-15.jpg"
+    ]
   },
   {
     "index": 14,
@@ -177,7 +255,11 @@
     ],
     "mrp": 4000,
     "price": 1800,
-    "localImage": "/products/tricycle-14.jpg"
+    "localImage": "/products/tricycle-14.jpg",
+    "localImages": [
+      "/products/tricycle-14-1.jpg",
+      "/products/tricycle-14.jpg"
+    ]
   },
   {
     "index": 13,
@@ -190,7 +272,11 @@
     ],
     "mrp": 4000,
     "price": 1800,
-    "localImage": "/products/tricycle-13.jpg"
+    "localImage": "/products/tricycle-13.jpg",
+    "localImages": [
+      "/products/tricycle-13-1.jpg",
+      "/products/tricycle-13.jpg"
+    ]
   },
   {
     "index": 12,
@@ -203,7 +289,11 @@
     ],
     "mrp": 5500,
     "price": 2600,
-    "localImage": "/products/tricycle-12.jpg"
+    "localImage": "/products/tricycle-12.jpg",
+    "localImages": [
+      "/products/tricycle-12-1.jpg",
+      "/products/tricycle-12.jpg"
+    ]
   },
   {
     "index": 11,
@@ -217,7 +307,11 @@
     ],
     "mrp": 6000,
     "price": 3000,
-    "localImage": "/products/tricycle-11.jpg"
+    "localImage": "/products/tricycle-11.jpg",
+    "localImages": [
+      "/products/tricycle-11-1.jpg",
+      "/products/tricycle-11.jpg"
+    ]
   },
   {
     "index": 10,
@@ -230,7 +324,11 @@
     ],
     "mrp": 4000,
     "price": 2499,
-    "localImage": "/products/tricycle-10.jpg"
+    "localImage": "/products/tricycle-10.jpg",
+    "localImages": [
+      "/products/tricycle-10-1.jpg",
+      "/products/tricycle-10.jpg"
+    ]
   },
   {
     "index": 9,
@@ -243,7 +341,11 @@
     ],
     "mrp": 3500,
     "price": 2199,
-    "localImage": "/products/tricycle-9.jpg"
+    "localImage": "/products/tricycle-9.jpg",
+    "localImages": [
+      "/products/tricycle-9-1.jpg",
+      "/products/tricycle-9.jpg"
+    ]
   },
   {
     "index": 8,
@@ -256,7 +358,10 @@
     ],
     "mrp": 2500,
     "price": 1499,
-    "localImage": "/products/tricycle-8.jpg"
+    "localImage": "/products/tricycle-8.jpg",
+    "localImages": [
+      "/products/tricycle-8.jpg"
+    ]
   },
   {
     "index": 7,
@@ -269,7 +374,10 @@
     ],
     "mrp": 3000,
     "price": 1699,
-    "localImage": "/products/tricycle-7.jpg"
+    "localImage": "/products/tricycle-7.jpg",
+    "localImages": [
+      "/products/tricycle-7.jpg"
+    ]
   },
   {
     "index": 6,
@@ -282,7 +390,10 @@
     ],
     "mrp": 2499,
     "price": 1499,
-    "localImage": "/products/tricycle-6.jpg"
+    "localImage": "/products/tricycle-6.jpg",
+    "localImages": [
+      "/products/tricycle-6.jpg"
+    ]
   },
   {
     "index": 5,
@@ -295,7 +406,10 @@
     ],
     "mrp": 3600,
     "price": 1899,
-    "localImage": "/products/tricycle-5.jpg"
+    "localImage": "/products/tricycle-5.jpg",
+    "localImages": [
+      "/products/tricycle-5.jpg"
+    ]
   },
   {
     "index": 4,
@@ -308,7 +422,10 @@
     ],
     "mrp": 2500,
     "price": 1499,
-    "localImage": "/products/tricycle-4.jpg"
+    "localImage": "/products/tricycle-4.jpg",
+    "localImages": [
+      "/products/tricycle-4.jpg"
+    ]
   },
   {
     "index": 3,
@@ -320,7 +437,10 @@
     ],
     "mrp": 5100,
     "price": 2499,
-    "localImage": "/products/tricycle-3.jpg"
+    "localImage": "/products/tricycle-3.jpg",
+    "localImages": [
+      "/products/tricycle-3.jpg"
+    ]
   },
   {
     "index": 2,
@@ -333,7 +453,10 @@
     ],
     "mrp": 2600,
     "price": 1499,
-    "localImage": "/products/tricycle-2.jpg"
+    "localImage": "/products/tricycle-2.jpg",
+    "localImages": [
+      "/products/tricycle-2.jpg"
+    ]
   },
   {
     "index": 1,
@@ -346,7 +469,10 @@
     ],
     "mrp": 5499,
     "price": 3499,
-    "localImage": "/products/tricycle-1.jpg"
+    "localImage": "/products/tricycle-1.jpg",
+    "localImages": [
+      "/products/tricycle-1.jpg"
+    ]
   },
   {
     "index": 0,
@@ -359,7 +485,10 @@
     ],
     "mrp": 11999,
     "price": 7499,
-    "localImage": "/products/tricycle-0.jpg"
+    "localImage": "/products/tricycle-0.jpg",
+    "localImages": [
+      "/products/tricycle-0.jpg"
+    ]
   },
   {
     "index": 1,
@@ -372,7 +501,10 @@
     ],
     "mrp": 2799,
     "price": 1800,
-    "localImage": "/products/tricycle-1.jpg"
+    "localImage": "/products/tricycle-1.jpg",
+    "localImages": [
+      "/products/tricycle-1.jpg"
+    ]
   },
   {
     "index": 2,
@@ -385,7 +517,10 @@
     ],
     "mrp": 2799,
     "price": 1800,
-    "localImage": "/products/tricycle-2.jpg"
+    "localImage": "/products/tricycle-2.jpg",
+    "localImages": [
+      "/products/tricycle-2.jpg"
+    ]
   },
   {
     "index": 3,
@@ -398,7 +533,10 @@
     ],
     "mrp": 2999,
     "price": 1999,
-    "localImage": "/products/tricycle-3.jpg"
+    "localImage": "/products/tricycle-3.jpg",
+    "localImages": [
+      "/products/tricycle-3.jpg"
+    ]
   },
   {
     "index": 4,
@@ -411,7 +549,10 @@
     ],
     "mrp": 1699,
     "price": 999,
-    "localImage": "/products/tricycle-4.jpg"
+    "localImage": "/products/tricycle-4.jpg",
+    "localImages": [
+      "/products/tricycle-4.jpg"
+    ]
   },
   {
     "index": 5,
@@ -424,7 +565,10 @@
     ],
     "mrp": 6499,
     "price": 3299,
-    "localImage": "/products/tricycle-5.jpg"
+    "localImage": "/products/tricycle-5.jpg",
+    "localImages": [
+      "/products/tricycle-5.jpg"
+    ]
   },
   {
     "index": 6,
@@ -437,7 +581,10 @@
     ],
     "mrp": 2499,
     "price": 1699,
-    "localImage": "/products/tricycle-6.jpg"
+    "localImage": "/products/tricycle-6.jpg",
+    "localImages": [
+      "/products/tricycle-6.jpg"
+    ]
   },
   {
     "index": 7,
@@ -450,7 +597,10 @@
     ],
     "mrp": 8999,
     "price": 5499,
-    "localImage": "/products/tricycle-7.jpg"
+    "localImage": "/products/tricycle-7.jpg",
+    "localImages": [
+      "/products/tricycle-7.jpg"
+    ]
   },
   {
     "index": 8,
@@ -463,7 +613,10 @@
     ],
     "mrp": 6999,
     "price": 4899,
-    "localImage": "/products/tricycle-8.jpg"
+    "localImage": "/products/tricycle-8.jpg",
+    "localImages": [
+      "/products/tricycle-8.jpg"
+    ]
   },
   {
     "index": 9,
@@ -476,7 +629,11 @@
     ],
     "mrp": 8999,
     "price": 5699,
-    "localImage": "/products/tricycle-9.jpg"
+    "localImage": "/products/tricycle-9.jpg",
+    "localImages": [
+      "/products/tricycle-9-1.jpg",
+      "/products/tricycle-9.jpg"
+    ]
   },
   {
     "index": 10,
@@ -489,7 +646,11 @@
     ],
     "mrp": null,
     "price": null,
-    "localImage": "/products/tricycle-10.jpg"
+    "localImage": "/products/tricycle-10.jpg",
+    "localImages": [
+      "/products/tricycle-10-1.jpg",
+      "/products/tricycle-10.jpg"
+    ]
   },
   {
     "index": 11,
@@ -502,7 +663,11 @@
     ],
     "mrp": 2999,
     "price": 1999,
-    "localImage": "/products/tricycle-11.jpg"
+    "localImage": "/products/tricycle-11.jpg",
+    "localImages": [
+      "/products/tricycle-11-1.jpg",
+      "/products/tricycle-11.jpg"
+    ]
   },
   {
     "index": 12,
@@ -515,7 +680,11 @@
     ],
     "mrp": 8999,
     "price": 6500,
-    "localImage": "/products/tricycle-12.jpg"
+    "localImage": "/products/tricycle-12.jpg",
+    "localImages": [
+      "/products/tricycle-12-1.jpg",
+      "/products/tricycle-12.jpg"
+    ]
   },
   {
     "index": 13,
@@ -528,7 +697,11 @@
     ],
     "mrp": 7999,
     "price": 5399,
-    "localImage": "/products/tricycle-13.jpg"
+    "localImage": "/products/tricycle-13.jpg",
+    "localImages": [
+      "/products/tricycle-13-1.jpg",
+      "/products/tricycle-13.jpg"
+    ]
   },
   {
     "index": 14,
@@ -541,7 +714,11 @@
     ],
     "mrp": 11999,
     "price": 8000,
-    "localImage": "/products/tricycle-14.jpg"
+    "localImage": "/products/tricycle-14.jpg",
+    "localImages": [
+      "/products/tricycle-14-1.jpg",
+      "/products/tricycle-14.jpg"
+    ]
   },
   {
     "index": 15,
@@ -554,7 +731,11 @@
     ],
     "mrp": 5999,
     "price": 3999,
-    "localImage": "/products/tricycle-15.jpg"
+    "localImage": "/products/tricycle-15.jpg",
+    "localImages": [
+      "/products/tricycle-15-1.jpg",
+      "/products/tricycle-15.jpg"
+    ]
   },
   {
     "index": 16,
@@ -567,7 +748,10 @@
     ],
     "mrp": 5299,
     "price": 3499,
-    "localImage": "/products/tricycle-16.jpg"
+    "localImage": "/products/tricycle-16.jpg",
+    "localImages": [
+      "/products/tricycle-16.jpg"
+    ]
   },
   {
     "index": 17,
@@ -580,7 +764,10 @@
     ],
     "mrp": 6299,
     "price": 4499,
-    "localImage": "/products/tricycle-17.jpg"
+    "localImage": "/products/tricycle-17.jpg",
+    "localImages": [
+      "/products/tricycle-17.jpg"
+    ]
   },
   {
     "index": 18,
@@ -593,7 +780,10 @@
     ],
     "mrp": 1999,
     "price": 1200,
-    "localImage": "/products/tricycle-18.jpg"
+    "localImage": "/products/tricycle-18.jpg",
+    "localImages": [
+      "/products/tricycle-18.jpg"
+    ]
   },
   {
     "index": 19,
@@ -606,6 +796,9 @@
     ],
     "mrp": 11999,
     "price": 7999,
-    "localImage": "/products/tricycle-19.jpg"
+    "localImage": "/products/tricycle-19.jpg",
+    "localImages": [
+      "/products/tricycle-19.jpg"
+    ]
   }
 ]
