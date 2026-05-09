@@ -1,10 +1,6 @@
 import { NextResponse } from "next/server";
 import { uploadBase64Image } from "@/lib/cloudinary";
 
-export const config = {
-  api: { bodyParser: { sizeLimit: "10mb" } }
-};
-
 export async function POST(req: Request) {
   try {
     if (!process.env.CLOUDINARY_CLOUD_NAME || !process.env.CLOUDINARY_API_KEY || !process.env.CLOUDINARY_API_SECRET) {
