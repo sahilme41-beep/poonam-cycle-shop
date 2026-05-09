@@ -7,37 +7,32 @@ const slides = [
   {
     title: "Premium Cycles & Toys in Kolhapur",
     subtitle: "Poonam Cycle & Toy World",
-    cta: "/shop",
-    image:
-      "https://images.unsplash.com/photo-1541625602330-2277a4c46182?q=80&w=1800&auto=format&fit=crop"
+    cta: "/category/electric-cars-toys",
+    image: "/home-banners/banner-1-bike-trike.png"
   },
   {
-    title: "Electric Ride-On Collection",
-    subtitle: "Cars, bikes, jeeps and scooters for kids",
+    title: "Electric Cars & Toys",
+    subtitle: "Cars, bikes, jeeps and scooters",
     cta: "/category/electric-cars-toys",
-    image:
-      "https://images.unsplash.com/photo-1519583272095-6433daf26b6e?q=80&w=1800&auto=format&fit=crop"
+    image: "/home-banners/banner-2-superbike.png"
   },
   {
     title: "Electric Cycles Collection",
-    subtitle: "Reliable builds for everyday smooth rides",
+    subtitle: "Power and comfort for daily rides",
     cta: "/category/electric-cycles",
-    image:
-      "https://images.unsplash.com/photo-1571333250630-f0230c320b6d?q=80&w=1800&auto=format&fit=crop"
+    image: "/home-banners/banner-4-emotorad.png"
   },
   {
-    title: "Tricycles for Happy Rides",
-    subtitle: "Comfortable three-wheelers for kids",
-    cta: "/category/tricycles",
-    image:
-      "https://images.unsplash.com/photo-1532298229144-0ec0c57515c7?q=80&w=1800&auto=format&fit=crop"
+    title: "Stylish Ride-On Scooters",
+    subtitle: "Popular color variants in stock",
+    cta: "/category/electric-cars-toys",
+    image: "/home-banners/banner-3-vespa.png"
   },
   {
-    title: "Everyday Cycles, Premium Build",
-    subtitle: "Clean design. Strong frames. Smooth ride.",
-    cta: "/shop",
-    image:
-      "https://images.unsplash.com/photo-1517949908119-7207687c0c54?q=80&w=1800&auto=format&fit=crop"
+    title: "Luxury Electric Cars for Kids",
+    subtitle: "Top premium models available",
+    cta: "/category/electric-cars-toys",
+    image: "/home-banners/banner-5-rolls.png"
   }
 ];
 
@@ -54,8 +49,8 @@ export default function HomeHeroSlider() {
   const active = slides[index];
 
   return (
-    <section className="relative mt-2 overflow-hidden">
-      <img src={active.image} alt={active.title} className="h-[52vh] w-full object-cover sm:h-[64vh]" />
+    <section className="relative mt-2 overflow-hidden bg-[#2a1d13]">
+      <img src={active.image} alt={active.title} className="h-[52vh] w-full object-contain sm:h-[64vh]" />
       <div className="absolute inset-0 bg-black/40" />
       <div className="absolute inset-0 flex items-center px-4">
         <div className="mx-auto w-full max-w-7xl">

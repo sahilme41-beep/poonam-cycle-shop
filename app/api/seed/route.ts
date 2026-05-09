@@ -78,6 +78,19 @@ export async function POST() {
       }
     }
 
+    // Normalize all existing products to active category taxonomy.
+    const existingProducts: any[] = await Product.find({});
+    for (const product of existingProducts) {
+      const normalized = resolveStoreCategory(
+        String(product.category || ""),
+        String(product.name || ""),
+        String(product.description || "")
+      );
+      if (product.category !== normalized.name) {
+        await Product.findByIdAndUpdate(product._id, { category: normalized.name }, { new: true });
+      }
+    }
+
     await Review.findOneAndUpdate(
       { name: "Rahul K" },
       { name: "Rahul K", rating: 5, message: "Great collection and very helpful staff." },

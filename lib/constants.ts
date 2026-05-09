@@ -31,7 +31,32 @@ export function resolveStoreCategory(rawCategory: string, rawName = "", rawDescr
   const text = `${rawName} ${rawDescription}`.toLowerCase();
 
   if (cat.includes("tricycle")) return STORE_CATEGORIES.find((c) => c.slug === "tricycles")!;
+  const toyKeywords = [
+    "ride-on",
+    "ride on",
+    "toy",
+    "jeep",
+    "car",
+    "scooter",
+    "battery operated",
+    "remote",
+    "kids",
+    "baby",
+    "stroller",
+    "walker",
+    "cradle"
+  ];
+  if (toyKeywords.some((k) => text.includes(k))) {
+    return STORE_CATEGORIES.find((c) => c.slug === "electric-cars-toys")!;
+  }
+  if (cat.includes("electric cycle") || cat.includes("mtb") || cat.includes("gear cycle")) {
+    return STORE_CATEGORIES.find((c) => c.slug === "electric-cycles")!;
+  }
   if (
+    text.includes("emotorad") ||
+    text.includes(" e-cycle") ||
+    text.includes("electric cycle") ||
+    /\bx[0-9]+\b/i.test(text) ||
     text.includes("cycle") ||
     text.includes("bicycle") ||
     text.includes("bike ")
