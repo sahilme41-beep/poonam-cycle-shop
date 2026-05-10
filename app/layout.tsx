@@ -26,8 +26,8 @@ export const metadata: Metadata = {
   description: "Kolhapur's trusted cycle & toy shop — electric cycles, kids ride-ons, tricycles, and more. Near Keswani Hospital, Gandhinagar, Kolhapur.",
   metadataBase: getMetadataBase(),
   icons: {
-    icon: "/logo.svg",
-    apple: "/logo.svg"
+    icon: "/logo.png",
+    apple: "/logo.png"
   },
   openGraph: {
     title: "Poonam Cycle & Toy World",

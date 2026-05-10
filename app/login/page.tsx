@@ -40,7 +40,7 @@ export default function LoginPage() {
       <div className="w-full max-w-sm">
         {/* Logo */}
         <div className="mb-6 flex flex-col items-center">
-          <Image src="/logo.svg" alt="Poonam Cycle & Toy World" width={180} height={68} className="h-16 w-auto" />
+          <Image src="/logo.png" alt="Poonam Cycle & Toy World" width={180} height={68} className="h-16 w-auto" />
           <p className="mt-3 text-sm text-slate-500">Admin Portal</p>
         </div>
 
