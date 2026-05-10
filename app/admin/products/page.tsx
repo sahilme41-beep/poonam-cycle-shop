@@ -207,7 +207,17 @@ export default function AdminProductsPage() {
               </div>
               <div>
                 <label className="mb-1 block text-xs font-medium text-slate-600">Subcategory</label>
-                <input className={inputCls} placeholder="Optional" value={form.subcategory} onChange={(e) => setForm({ ...form, subcategory: e.target.value })} />
+                {(() => {
+                  const subs = STORE_CATEGORIES.find((c) => c.name === form.category)?.subcategories || [];
+                  return subs.length > 0 ? (
+                    <select className={inputCls} value={form.subcategory} onChange={(e) => setForm({ ...form, subcategory: e.target.value })}>
+                      <option value="">— None —</option>
+                      {subs.map((s) => <option key={s} value={s}>{s}</option>)}
+                    </select>
+                  ) : (
+                    <input className={inputCls} placeholder="Optional" value={form.subcategory} onChange={(e) => setForm({ ...form, subcategory: e.target.value })} />
+                  );
+                })()}
               </div>
             </div>
             <div className="flex gap-6 pt-1">
