@@ -100,7 +100,7 @@ export default async function CategoryPage({
             >
               All ({allInCategory.length})
             </a>
-            {categoryConfig.subcategories.map((sub) => {
+            {categoryConfig.subcategories.map((sub: string) => {
               const count = allInCategory.filter((p: any) => String(p.subcategory || "").toLowerCase() === sub.toLowerCase()).length;
               return (
                 <a
