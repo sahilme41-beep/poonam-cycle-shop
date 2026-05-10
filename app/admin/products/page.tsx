@@ -19,13 +19,18 @@ const baseProduct = {
 
 export default function AdminProductsPage() {
   const [products, setProducts] = useState<any[]>([]);
+  const [dbCategories, setDbCategories] = useState<any[]>([]);
   const [form, setForm] = useState<any>(baseProduct);
   const [uploading, setUploading] = useState(false);
   const [editingId, setEditingId] = useState<string | null>(null);
 
   async function load() {
-    const res = await fetch("/api/products");
-    setProducts(await res.json());
+    const [prodRes, catRes] = await Promise.all([
+      fetch("/api/products"),
+      fetch("/api/categories")
+    ]);
+    setProducts(await prodRes.json());
+    setDbCategories(await catRes.json());
   }
 
   useEffect(() => {
@@ -207,12 +212,14 @@ export default function AdminProductsPage() {
               </div>
               <div>
                 <label className="mb-1 block text-xs font-medium text-slate-600">Subcategory</label>
-                {(() => {
-                  const subs = STORE_CATEGORIES.find((c) => c.name === form.category)?.subcategories || [];
+{(() => {
+                  const dbCat = dbCategories.find((c) => c.name === form.category);
+                  const staticCat = STORE_CATEGORIES.find((c) => c.name === form.category);
+                  const subs: string[] = dbCat?.subcategories?.length ? dbCat.subcategories : (staticCat?.subcategories || []);
                   return subs.length > 0 ? (
                     <select className={inputCls} value={form.subcategory} onChange={(e) => setForm({ ...form, subcategory: e.target.value })}>
                       <option value="">— None —</option>
-                      {subs.map((s) => <option key={s} value={s}>{s}</option>)}
+                      {subs.map((s: string) => <option key={s} value={s}>{s}</option>)}
                     </select>
                   ) : (
                     <input className={inputCls} placeholder="Optional" value={form.subcategory} onChange={(e) => setForm({ ...form, subcategory: e.target.value })} />
