@@ -34,7 +34,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
       <div className="sticky top-[72px] z-30 border-b border-green-100 bg-white shadow-sm">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-2.5">
           <div className="flex items-center gap-3">
-            <Image src="/logo.svg" alt="Admin" width={120} height={43} className="h-8 w-auto" />
+            <Image src="/logo.png" alt="Admin" width={120} height={43} className="h-8 w-auto" />
             <span className="rounded-full bg-brand-greenlight px-2 py-0.5 text-xs font-semibold text-brand-green">
               Admin Panel
             </span>
