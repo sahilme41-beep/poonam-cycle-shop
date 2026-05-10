@@ -1,5 +1,5 @@
 import ProductCard from "@/components/ProductCard";
-import { getStoreProducts, getStoreMediaSettings } from "@/lib/storefront";
+import { getStoreProducts, getStoreMediaSettings, getStoreCategories } from "@/lib/storefront";
 import { STORE_CATEGORIES, formatCategorySlug } from "@/lib/constants";
 import Link from "next/link";
 
@@ -35,12 +35,13 @@ export default async function CategoryPage({
   params: { slug: string };
   searchParams: { sub?: string };
 }) {
-  const [all, mediaSettings] = await Promise.all([
+  const [all, mediaSettings, dbCategories] = await Promise.all([
     getStoreProducts(),
-    getStoreMediaSettings()
+    getStoreMediaSettings(),
+    getStoreCategories()
   ]);
 
-  const categoryConfig = STORE_CATEGORIES.find((c) => c.slug === params.slug);
+  const categoryConfig = (dbCategories as any[]).find((c) => c.slug === params.slug) || STORE_CATEGORIES.find((c) => c.slug === params.slug);
   const fallbackName = decodeURIComponent(params.slug).replaceAll("-", " ");
   const categoryName = categoryConfig?.name || fallbackName;
   const selectedSub = (searchParams.sub || "").toLowerCase();
