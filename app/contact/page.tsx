@@ -43,7 +43,7 @@ export default function ContactPage() {
               <div className="space-y-3 text-sm text-slate-700">
                 <div className="flex items-start gap-3 rounded-xl bg-slate-50 p-3">
                   <span className="mt-0.5 text-xl">📍</span>
-                  <p>Near Kaswam Hospital, Gandhinagar, Kolhapur, Maharashtra</p>
+                  <p>Near Keswani Hospital, Gandhinagar, Kolhapur, Maharashtra</p>
                 </div>
                 <div className="grid grid-cols-2 gap-2">
                   <a href="tel:7588267528" className="flex items-center gap-2 rounded-xl border border-green-100 p-3 hover:border-brand-green hover:text-brand-green">

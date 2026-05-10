@@ -23,7 +23,7 @@ function getMetadataBase() {
 
 export const metadata: Metadata = {
   title: "Poonam Cycle & Toy World | Kolhapur",
-  description: "Kolhapur's trusted cycle & toy shop — electric cycles, kids ride-ons, tricycles, and more. Near Kaswam Hospital, Gandhinagar, Kolhapur.",
+  description: "Kolhapur's trusted cycle & toy shop — electric cycles, kids ride-ons, tricycles, and more. Near Keswani Hospital, Gandhinagar, Kolhapur.",
   metadataBase: getMetadataBase(),
   icons: {
     icon: "/logo.svg",
@@ -71,7 +71,7 @@ export default function RootLayout({
               url: "https://poonamcycleworld.in",
               address: {
                 "@type": "PostalAddress",
-                streetAddress: "Near Kaswam Hospital, Gandhinagar",
+                streetAddress: "Near Keswani Hospital, Gandhinagar",
                 addressLocality: "Kolhapur",
                 postalCode: "416002",
                 addressRegion: "Maharashtra",
